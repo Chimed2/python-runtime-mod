@@ -1,0 +1,15 @@
+{
+	"geode": "4.0.0",
+	"gd": {
+		"win": "2.206",
+		"android": "2.206",
+		"mac": "2.206",
+		"ios": "2.206"
+	},
+	"id": "chimed.python_runtime",
+	"name": "Python Runtime",
+	"version": "1.0.0",
+	"developer": "Chimed",
+	"description": "API for other mods to run Python code.",
+	"dependencies": []
+}

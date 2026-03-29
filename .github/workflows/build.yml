@@ -1,0 +1,47 @@
+name: Build Geode Mod
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    strategy:
+      fail-fast:false
+      matrix:
+        config:
+        - name: Windows
+          os: windows-latest
+          target: windows
+        - name: macOS
+          os: macos-latest
+          target: mac-os
+        - name: Android64
+          os: ubuntu-latest
+          target: android64
+        - name: Android32
+          os: ubuntu-latest
+          target: android32
+
+    name: ${{ matrix.config.name }}
+    runs-on: ${{ matrix.config.os }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11' # Stable version for embedding
+
+      - name: Build Mod
+        uses: geode-sdk/build-geode-mod@main
+        with:
+          bindings-checkout: false
+          combine: true
+          target: ${{ matrix.config.target }}
+          # We pass the Python path to CMake
+          extra-config: -DPython3_ROOT_DIR=${{ env.pythonLocation }}
