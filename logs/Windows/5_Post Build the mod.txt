@@ -1,0 +1,41 @@
+﻿2026-03-29T06:37:43.5929511Z Post job cleanup.
+2026-03-29T06:37:45.0431139Z Post job cleanup.
+2026-03-29T06:37:45.3372336Z [command]"C:\Program Files\Git\usr\bin\tar.exe" --posix -cf cache.tzst --exclude cache.tzst -P -C D:/a/python-runtime-mod/python-runtime-mod --files-from manifest.txt --force-local --use-compress-program "zstd -T0"
+2026-03-29T06:37:45.9492633Z Sent 5671789 of 5671789 (100.0%), 26.3 MBs/sec
+2026-03-29T06:37:46.0077397Z Cache saved with key: cpm-win-v1-d148885dd428ae02fbf67f73e4c5b66b02a64ddd179292c0d6d565c423d28de7
+2026-03-29T06:37:46.0348319Z Post job cleanup.
+2026-03-29T06:37:46.3618561Z ##[group]sccache stats
+2026-03-29T06:37:46.4646167Z [command]C:\Users\runneradmin\.cargo\bin\sccache.exe -s
+2026-03-29T06:37:46.4872744Z Compile requests                     22
+2026-03-29T06:37:46.4873446Z Compile requests executed            22
+2026-03-29T06:37:46.4874214Z Cache hits                           20
+2026-03-29T06:37:46.4874651Z Cache hits (C/C++)                   20
+2026-03-29T06:37:46.4875026Z Cache misses                          2
+2026-03-29T06:37:46.4875468Z Cache misses (C/C++)                  2
+2026-03-29T06:37:46.4875836Z Cache hits rate                   90.91 %
+2026-03-29T06:37:46.4876227Z Cache hits rate (C/C++)           90.91 %
+2026-03-29T06:37:46.4876609Z Cache timeouts                        0
+2026-03-29T06:37:46.4876974Z Cache read errors                     0
+2026-03-29T06:37:46.4877338Z Forced recaches                       0
+2026-03-29T06:37:46.4877701Z Cache write errors                    0
+2026-03-29T06:37:46.4878069Z Cache errors                          0
+2026-03-29T06:37:46.4878438Z Compilations                          2
+2026-03-29T06:37:46.4878819Z Compilation failures                  0
+2026-03-29T06:37:46.4879211Z Non-cacheable compilations            0
+2026-03-29T06:37:46.4879606Z Non-cacheable calls                   0
+2026-03-29T06:37:46.4880344Z Non-compilation calls                 0
+2026-03-29T06:37:46.4880726Z Unsupported compiler calls            0
+2026-03-29T06:37:46.4881130Z Average cache write               0.019 s
+2026-03-29T06:37:46.4881540Z Average compiler                  4.468 s
+2026-03-29T06:37:46.4881897Z Average cache read hit            0.000 s
+2026-03-29T06:37:46.4882287Z Failed distributed compilations       0
+2026-03-29T06:37:46.4882933Z Cache location                  Local disk: "D:\\a\\python-runtime-mod\\python-runtime-mod\\.sccache"
+2026-03-29T06:37:46.4883602Z Use direct/preprocessor mode?   yes
+2026-03-29T06:37:46.4883992Z Version (client)                0.10.0
+2026-03-29T06:37:46.4884378Z Cache size                           81 MiB
+2026-03-29T06:37:46.4884797Z Max cache size                       10 GiB
+2026-03-29T06:37:46.4907635Z ##[endgroup]
+2026-03-29T06:37:46.6682826Z Save cache using key "sccache-win-v1-2026-03-29T06:37:46.666Z".
+2026-03-29T06:37:46.8022754Z [command]"C:\Program Files\Git\usr\bin\tar.exe" --posix -cf cache.tzst --exclude cache.tzst -P -C D:/a/python-runtime-mod/python-runtime-mod --files-from manifest.txt --force-local --use-compress-program "zstd -T0"
+2026-03-29T06:37:48.2172319Z Sent 84410368 of 84990075 (99.3%), 80.1 MBs/sec
+2026-03-29T06:37:48.4390562Z Sent 84990075 of 84990075 (100.0%), 66.1 MBs/sec

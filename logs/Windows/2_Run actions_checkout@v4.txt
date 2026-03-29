@@ -1,0 +1,59 @@
+﻿2026-03-29T06:35:11.0097348Z ##[group]Run actions/checkout@v4
+2026-03-29T06:35:11.0098170Z with:
+2026-03-29T06:35:11.0098461Z   repository: Chimed2/python-runtime-mod
+2026-03-29T06:35:11.0099010Z   token: ***
+2026-03-29T06:35:11.0099261Z   ssh-strict: true
+2026-03-29T06:35:11.0099513Z   ssh-user: git
+2026-03-29T06:35:11.0099779Z   persist-credentials: true
+2026-03-29T06:35:11.0100063Z   clean: true
+2026-03-29T06:35:11.0100341Z   sparse-checkout-cone-mode: true
+2026-03-29T06:35:11.0100650Z   fetch-depth: 1
+2026-03-29T06:35:11.0100906Z   fetch-tags: false
+2026-03-29T06:35:11.0101168Z   show-progress: true
+2026-03-29T06:35:11.0101420Z   lfs: false
+2026-03-29T06:35:11.0101656Z   submodules: false
+2026-03-29T06:35:11.0101909Z   set-safe-directory: true
+2026-03-29T06:35:11.0102397Z ##[endgroup]
+2026-03-29T06:35:11.1888049Z Syncing repository: Chimed2/python-runtime-mod
+2026-03-29T06:35:11.1889756Z ##[group]Getting Git version info
+2026-03-29T06:35:11.1890285Z Working directory is 'D:\a\python-runtime-mod\python-runtime-mod'
+2026-03-29T06:35:11.3446377Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-03-29T06:35:12.7676241Z git version 2.53.0.windows.2
+2026-03-29T06:35:12.7728790Z ##[endgroup]
+2026-03-29T06:35:12.7751093Z Temporarily overriding HOME='D:\a\_temp\de80a589-f6d8-4a3f-a152-8e3551751ffc' before making global git config changes
+2026-03-29T06:35:12.7751992Z Adding repository directory to the temporary git global config as a safe directory
+2026-03-29T06:35:12.7762455Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\python-runtime-mod\python-runtime-mod
+2026-03-29T06:35:12.9298010Z Deleting the contents of 'D:\a\python-runtime-mod\python-runtime-mod'
+2026-03-29T06:35:12.9304071Z ##[group]Initializing the repository
+2026-03-29T06:35:12.9314978Z [command]"C:\Program Files\Git\bin\git.exe" init D:\a\python-runtime-mod\python-runtime-mod
+2026-03-29T06:35:13.1856334Z Initialized empty Git repository in D:/a/python-runtime-mod/python-runtime-mod/.git/
+2026-03-29T06:35:13.1906305Z [command]"C:\Program Files\Git\bin\git.exe" remote add origin https://github.com/Chimed2/python-runtime-mod
+2026-03-29T06:35:13.3117113Z ##[endgroup]
+2026-03-29T06:35:13.3117602Z ##[group]Disabling automatic garbage collection
+2026-03-29T06:35:13.3133671Z [command]"C:\Program Files\Git\bin\git.exe" config --local gc.auto 0
+2026-03-29T06:35:13.3441929Z ##[endgroup]
+2026-03-29T06:35:13.3442679Z ##[group]Setting up auth
+2026-03-29T06:35:13.3460117Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-03-29T06:35:13.3778045Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-03-29T06:35:19.3622152Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-03-29T06:35:19.3921046Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-03-29T06:35:19.9081442Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-03-29T06:35:19.9396024Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-03-29T06:35:20.4569496Z [command]"C:\Program Files\Git\bin\git.exe" config --local http.https://github.com/.extraheader "AUTHORIZATION: basic ***"
+2026-03-29T06:35:20.4877401Z ##[endgroup]
+2026-03-29T06:35:20.4891126Z ##[group]Fetching the repository
+2026-03-29T06:35:20.4892522Z [command]"C:\Program Files\Git\bin\git.exe" -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +12bafb8c938cc2785874c41a178aa1a99305322f:refs/remotes/origin/master
+2026-03-29T06:35:22.6594283Z From https://github.com/Chimed2/python-runtime-mod
+2026-03-29T06:35:22.6595185Z  * [new ref]         12bafb8c938cc2785874c41a178aa1a99305322f -> origin/master
+2026-03-29T06:35:22.7577616Z ##[endgroup]
+2026-03-29T06:35:22.7578867Z ##[group]Determining the checkout info
+2026-03-29T06:35:22.7582186Z ##[endgroup]
+2026-03-29T06:35:22.7593406Z [command]"C:\Program Files\Git\bin\git.exe" sparse-checkout disable
+2026-03-29T06:35:22.8330324Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all extensions.worktreeConfig
+2026-03-29T06:35:22.8616540Z ##[group]Checking out the ref
+2026-03-29T06:35:22.8628626Z [command]"C:\Program Files\Git\bin\git.exe" checkout --progress --force -B master refs/remotes/origin/master
+2026-03-29T06:35:22.9751423Z Reset branch 'master'
+2026-03-29T06:35:22.9774557Z branch 'master' set up to track 'origin/master'.
+2026-03-29T06:35:22.9817802Z ##[endgroup]
+2026-03-29T06:35:23.0495166Z [command]"C:\Program Files\Git\bin\git.exe" log -1 --format=%H
+2026-03-29T06:35:23.0761518Z 12bafb8c938cc2785874c41a178aa1a99305322f

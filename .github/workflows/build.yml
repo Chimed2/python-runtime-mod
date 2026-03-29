@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     strategy:
-      fail-fast:false
+      fail-fast: false
       matrix:
         config:
         - name: Windows
@@ -18,6 +18,9 @@ jobs:
         - name: macOS
           os: macos-latest
           target: mac-os
+        - name: iOS
+          os: macos-latest
+          target: ios
         - name: Android64
           os: ubuntu-latest
           target: android64
@@ -35,13 +38,13 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11' # Stable version for embedding
+          python-version: '3.11'
+- name: Build Mod
+  uses: geode-sdk/build-geode-mod@main
+  with:
+    bindings-checkout: false
+    combine: true
+    target: ${{ matrix.config.target }}
+    # Force CMake to use the Python we just set up
+    extra-config: -DPython3_ROOT_DIR=${{ env.pythonLocation }} -DPython3_FIND_STRATEGY=LOCATION -DPython3_FIND_FRAMEWORK=NEVER
 
-      - name: Build Mod
-        uses: geode-sdk/build-geode-mod@main
-        with:
-          bindings-checkout: false
-          combine: true
-          target: ${{ matrix.config.target }}
-          # We pass the Python path to CMake
-          extra-config: -DPython3_ROOT_DIR=${{ env.pythonLocation }}

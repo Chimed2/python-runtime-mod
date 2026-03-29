@@ -1,0 +1,40 @@
+﻿2026-03-29T06:35:07.8277746Z Current runner version: '2.333.0'
+2026-03-29T06:35:07.8303819Z ##[group]Runner Image Provisioner
+2026-03-29T06:35:07.8304662Z Hosted Compute Agent
+2026-03-29T06:35:07.8305244Z Version: 20260213.493
+2026-03-29T06:35:07.8305861Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+2026-03-29T06:35:07.8306575Z Build Date: 2026-02-13T00:28:41Z
+2026-03-29T06:35:07.8307225Z Worker ID: {ab33611a-1cee-4b24-bd0c-86a5e95324b7}
+2026-03-29T06:35:07.8307926Z Azure Region: westcentralus
+2026-03-29T06:35:07.8308461Z ##[endgroup]
+2026-03-29T06:35:07.8310227Z ##[group]Operating System
+2026-03-29T06:35:07.8310839Z Ubuntu
+2026-03-29T06:35:07.8311404Z 24.04.4
+2026-03-29T06:35:07.8311805Z LTS
+2026-03-29T06:35:07.8312336Z ##[endgroup]
+2026-03-29T06:35:07.8312793Z ##[group]Runner Image
+2026-03-29T06:35:07.8313304Z Image: ubuntu-24.04
+2026-03-29T06:35:07.8313869Z Version: 20260323.65.1
+2026-03-29T06:35:07.8314814Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260323.65/images/ubuntu/Ubuntu2404-Readme.md
+2026-03-29T06:35:07.8316512Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260323.65
+2026-03-29T06:35:07.8317397Z ##[endgroup]
+2026-03-29T06:35:07.8318482Z ##[group]GITHUB_TOKEN Permissions
+2026-03-29T06:35:07.8320522Z Contents: read
+2026-03-29T06:35:07.8321057Z Metadata: read
+2026-03-29T06:35:07.8321649Z Packages: read
+2026-03-29T06:35:07.8322107Z ##[endgroup]
+2026-03-29T06:35:07.8324233Z Secret source: Actions
+2026-03-29T06:35:07.8325020Z Prepare workflow directory
+2026-03-29T06:35:07.8677964Z Prepare all required actions
+2026-03-29T06:35:07.8717060Z Getting action download info
+2026-03-29T06:35:08.2661725Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2026-03-29T06:35:08.3811444Z Download action repository 'geode-sdk/build-geode-mod@main' (SHA:825dce8c7404aacc975db01b09c99d295680cdec)
+2026-03-29T06:35:09.0256324Z Getting action download info
+2026-03-29T06:35:09.2875781Z Download action repository 'robinraju/release-downloader@v1.9' (SHA:368754b9c6f47c345fcfbf42bcb577c2f0f5f395)
+2026-03-29T06:35:10.1225724Z Download action repository 'hendrikmuhs/ccache-action@v1' (SHA:5ebbd400eff9e74630f759d94ddd7b6c26299639)
+2026-03-29T06:35:10.9296268Z Download action repository 'actions/cache@v4' (SHA:0057852bfaa89a56745cba8c7296529d2fc39830)
+2026-03-29T06:35:11.0217717Z Download action repository 'geode-sdk/cli@main' (SHA:0a69a366e22240939dbea2dc25d9b90b22b02e52)
+2026-03-29T06:35:11.6100092Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-03-29T06:35:11.7433950Z Getting action download info
+2026-03-29T06:35:11.8816805Z Download action repository 'robinraju/release-downloader@v1.10' (SHA:c39a3b234af58f0cf85888573d361fb6fa281534)
+2026-03-29T06:35:12.7382348Z Complete job name: Android32

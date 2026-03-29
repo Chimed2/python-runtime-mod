@@ -1,0 +1,72 @@
+﻿2026-03-29T06:35:12.1006548Z ##[group]Run actions/checkout@v4
+2026-03-29T06:35:12.1007210Z with:
+2026-03-29T06:35:12.1007425Z   repository: Chimed2/python-runtime-mod
+2026-03-29T06:35:12.1007818Z   token: ***
+2026-03-29T06:35:12.1008026Z   ssh-strict: true
+2026-03-29T06:35:12.1008203Z   ssh-user: git
+2026-03-29T06:35:12.1008408Z   persist-credentials: true
+2026-03-29T06:35:12.1008629Z   clean: true
+2026-03-29T06:35:12.1008817Z   sparse-checkout-cone-mode: true
+2026-03-29T06:35:12.1009041Z   fetch-depth: 1
+2026-03-29T06:35:12.1009483Z   fetch-tags: false
+2026-03-29T06:35:12.1009676Z   show-progress: true
+2026-03-29T06:35:12.1009860Z   lfs: false
+2026-03-29T06:35:12.1010018Z   submodules: false
+2026-03-29T06:35:12.1010211Z   set-safe-directory: true
+2026-03-29T06:35:12.1010955Z ##[endgroup]
+2026-03-29T06:35:12.2064252Z Syncing repository: Chimed2/python-runtime-mod
+2026-03-29T06:35:12.2065550Z ##[group]Getting Git version info
+2026-03-29T06:35:12.2065998Z Working directory is '/home/runner/work/python-runtime-mod/python-runtime-mod'
+2026-03-29T06:35:12.2066643Z [command]/usr/bin/git version
+2026-03-29T06:35:12.2108425Z git version 2.53.0
+2026-03-29T06:35:12.2134749Z ##[endgroup]
+2026-03-29T06:35:12.2158737Z Temporarily overriding HOME='/home/runner/work/_temp/e25cdfd4-9ffe-4b91-ba5c-f1b2c2353a83' before making global git config changes
+2026-03-29T06:35:12.2160877Z Adding repository directory to the temporary git global config as a safe directory
+2026-03-29T06:35:12.2165761Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/python-runtime-mod/python-runtime-mod
+2026-03-29T06:35:12.2198836Z Deleting the contents of '/home/runner/work/python-runtime-mod/python-runtime-mod'
+2026-03-29T06:35:12.2203200Z ##[group]Initializing the repository
+2026-03-29T06:35:12.2207883Z [command]/usr/bin/git init /home/runner/work/python-runtime-mod/python-runtime-mod
+2026-03-29T06:35:12.2311582Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-03-29T06:35:12.2312515Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-03-29T06:35:12.2313446Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-03-29T06:35:12.2314116Z hint: call:
+2026-03-29T06:35:12.2314303Z hint:
+2026-03-29T06:35:12.2314559Z hint: 	git config --global init.defaultBranch <name>
+2026-03-29T06:35:12.2314865Z hint:
+2026-03-29T06:35:12.2315149Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-03-29T06:35:12.2315642Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-03-29T06:35:12.2316024Z hint:
+2026-03-29T06:35:12.2316205Z hint: 	git branch -m <name>
+2026-03-29T06:35:12.2316407Z hint:
+2026-03-29T06:35:12.2316698Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-03-29T06:35:12.2317315Z Initialized empty Git repository in /home/runner/work/python-runtime-mod/python-runtime-mod/.git/
+2026-03-29T06:35:12.2323992Z [command]/usr/bin/git remote add origin https://github.com/Chimed2/python-runtime-mod
+2026-03-29T06:35:12.2353798Z ##[endgroup]
+2026-03-29T06:35:12.2354201Z ##[group]Disabling automatic garbage collection
+2026-03-29T06:35:12.2358114Z [command]/usr/bin/git config --local gc.auto 0
+2026-03-29T06:35:12.2384623Z ##[endgroup]
+2026-03-29T06:35:12.2385035Z ##[group]Setting up auth
+2026-03-29T06:35:12.2391716Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-03-29T06:35:12.2420061Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-03-29T06:35:12.2701049Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-03-29T06:35:12.2728959Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-03-29T06:35:12.2937864Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-03-29T06:35:12.2968032Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-03-29T06:35:12.3182712Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-03-29T06:35:12.3215690Z ##[endgroup]
+2026-03-29T06:35:12.3216423Z ##[group]Fetching the repository
+2026-03-29T06:35:12.3224012Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +12bafb8c938cc2785874c41a178aa1a99305322f:refs/remotes/origin/master
+2026-03-29T06:35:12.5501094Z From https://github.com/Chimed2/python-runtime-mod
+2026-03-29T06:35:12.5501698Z  * [new ref]         12bafb8c938cc2785874c41a178aa1a99305322f -> origin/master
+2026-03-29T06:35:12.5528771Z ##[endgroup]
+2026-03-29T06:35:12.5529942Z ##[group]Determining the checkout info
+2026-03-29T06:35:12.5532248Z ##[endgroup]
+2026-03-29T06:35:12.5537488Z [command]/usr/bin/git sparse-checkout disable
+2026-03-29T06:35:12.5574048Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-03-29T06:35:12.5598186Z ##[group]Checking out the ref
+2026-03-29T06:35:12.5602946Z [command]/usr/bin/git checkout --progress --force -B master refs/remotes/origin/master
+2026-03-29T06:35:12.5645018Z Reset branch 'master'
+2026-03-29T06:35:12.5647369Z branch 'master' set up to track 'origin/master'.
+2026-03-29T06:35:12.5653070Z ##[endgroup]
+2026-03-29T06:35:12.5684719Z [command]/usr/bin/git log -1 --format=%H
+2026-03-29T06:35:12.5705744Z 12bafb8c938cc2785874c41a178aa1a99305322f
