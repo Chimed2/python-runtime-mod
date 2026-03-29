@@ -21,10 +21,6 @@ jobs:
           target: mac-os
           # macOS runner is arm64, so we disable universal binary to avoid x86_64 linking errors with arm64 Python
           extra-args: "-DGEODE_DISABLE_UNIVERSAL_BINARY=ON"
-        - name: iOS
-          os: macos-latest
-          target: ios
-          extra-args: ""
         - name: Android64
           os: ubuntu-latest
           target: android64
