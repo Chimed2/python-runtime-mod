@@ -35,7 +35,7 @@ project(PythonRuntime VERSION 1.0.0)
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS src/*.cpp)
 add_library(${PROJECT_NAME} SHARED ${SOURCES})
 
-target_link_libraries(${PROJECT_NAME} PRIVATE ${PYTHON_TARGET})
+target_link_libraries(${PROJECT_NAME} ${PYTHON_TARGET})
 if (NOT ANDROID AND NOT IOS)
     target_include_directories(${PROJECT_NAME} PRIVATE ${Python3_INCLUDE_DIRS})
 endif()
