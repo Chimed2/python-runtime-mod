@@ -49,7 +49,8 @@ jobs:
         with:
           bindings-checkout: false
           combine: true
-          target: ${{ matrix.config.target }}
+          # Explicitly pass the target as platform, and remove the problematic '@src/main.cpp' argument.
+          target: ${{ matrix.config.target }} 
           # Force CMake to use the Python we just set up
           extra-config: -DPython3_ROOT_DIR=${{ env.pythonLocation }} -DPython3_FIND_STRATEGY=LOCATION -DPython3_FIND_FRAMEWORK=NEVER ${{ matrix.config.extra-args }}
           # Allow Android to fail without stopping the whole pipeline
