@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <Geode/Geode.hpp>
 #include <Python.h>
 #include "../include/PythonRuntime.hpp"
@@ -10,31 +11,23 @@
 
 using namespace geode::prelude;
 
-class $modify(Mod) {
-    bool setup() override {
-        // For mobile, we might need to set the Python path to the internal data directory
-        #ifdef GEODE_IS_ANDROID
-            // Android-specific initialization if needed
-        #endif
-
-        if (!Py_IsInitialized()) {
-            Py_Initialize();
-            log::info("Python Initialized!");
-            PythonRuntime::setupSandbox();
-            PythonRuntime::initializeForMod(this->getMod());
-        }
-
-        Loader::get()->queueInMainThread([]() {
-            for (auto const& mod : Loader::get()->getAllMods()) {
-                if (mod->getID() != "chimed.python_runtime") {
-                    PythonRuntime::initializeForMod(mod);
-                }
-            }
-        });
-
-        return true;
+$on_mod(Loaded) {
+    if (!Py_IsInitialized()) {
+        Py_Initialize();
+        log::info("Python Initialized!");
+        PythonRuntime::setupSandbox();
+        PythonRuntime::initializeForMod(geode::Mod::get());
     }
-};
+
+    // Delay scanning other mods until they are all loaded
+    Loader::get()->queueInMainThread([]() {
+        for (auto const& mod : Loader::get()->getAllMods()) {
+            if (mod->getID() != "chimed.python_runtime") {
+                PythonRuntime::initializeForMod(mod);
+            }
+        }
+    });
+}
 
 void PythonRuntime::initializeForMod(geode::Mod* mod) {
     if (!mod) return;
@@ -52,7 +45,6 @@ void PythonRuntime::initializeForMod(geode::Mod* mod) {
 
     log::info("Initializing Python for mod: {}", mod->getID());
 
-    // Dependency installation is disabled on mobile due to lack of local pip
     #ifndef GEODE_IS_MOBILE
         ensureDependencies(mod);
     #else
@@ -71,7 +63,7 @@ void PythonRuntime::initializeForMod(geode::Mod* mod) {
 
 void PythonRuntime::ensureDependencies(geode::Mod* mod) {
     #ifdef GEODE_IS_MOBILE
-        return; // Already handled in initializeForMod
+        return;
     #else
     auto modDir = mod->getConfigDir() / "python";
     auto envFile = modDir / ".env";
@@ -122,7 +114,6 @@ void PythonRuntime::ensureDependencies(geode::Mod* mod) {
 }
 
 void PythonRuntime::setupSandbox() {
-    // Simple audit hook to prevent dangerous operations
     const char* sandboxScript = R"(
 import sys
 
@@ -130,7 +121,6 @@ class RuntimePermissionError(Exception):
     pass
 
 def audit_hook(event, args):
-    # Restricted events
     restricted = ['os.system', 'os.spawn', 'subprocess.Popen', 'socket.connect', 'urllib.request.urlopen']
     if event in restricted:
         raise RuntimePermissionError(f"Access to {event} is restricted by Geode Python Runtime.")
@@ -142,7 +132,6 @@ sys.addaudithook(audit_hook)
 
 void PythonRuntime::runString(std::string const& code, geode::Mod* mod) {
     if (!Py_IsInitialized()) return;
-    // Set up mod-specific context if needed
     PyRun_SimpleString(code.c_str());
 }
 

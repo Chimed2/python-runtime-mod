@@ -18,7 +18,6 @@ class PYTHON_API PythonRuntime {
 public:
     /**
      * @brief Initialize the Python environment for a specific mod.
-     * This will check for dependencies and setup the sandbox.
      */
     static void initializeForMod(geode::Mod* mod);
 
@@ -32,7 +31,13 @@ public:
      */
     static void runFile(std::filesystem::path const& path, geode::Mod* mod = nullptr);
 
-private:
+    /**
+     * @brief Setup the security sandbox.
+     */
     static void setupSandbox();
+
+    /**
+     * @brief Check and install dependencies for a mod.
+     */
     static void ensureDependencies(geode::Mod* mod);
 };
