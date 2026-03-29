@@ -1,38 +1,38 @@
-﻿2026-03-29T06:36:00.5330218Z Post job cleanup.
-2026-03-29T06:36:00.5368139Z Post job cleanup.
-2026-03-29T06:36:00.6657228Z ##[group]sccache stats
-2026-03-29T06:36:00.6671394Z [command]/usr/local/bin/sccache -s
-2026-03-29T06:36:00.6697107Z Compile requests                     22
-2026-03-29T06:36:00.6697708Z Compile requests executed            22
-2026-03-29T06:36:00.6698228Z Cache hits                           19
-2026-03-29T06:36:00.6698738Z Cache hits (C/C++)                   19
-2026-03-29T06:36:00.6699528Z Cache misses                          2
-2026-03-29T06:36:00.6699981Z Cache misses (C/C++)                  2
-2026-03-29T06:36:00.6700431Z Cache hits rate                   90.48 %
-2026-03-29T06:36:00.6700858Z Cache hits rate (C/C++)           90.48 %
-2026-03-29T06:36:00.6701271Z Cache timeouts                        0
-2026-03-29T06:36:00.6701677Z Cache read errors                     0
-2026-03-29T06:36:00.6702074Z Forced recaches                       0
-2026-03-29T06:36:00.6702654Z Cache write errors                    0
-2026-03-29T06:36:00.6703403Z Cache errors                          1
-2026-03-29T06:36:00.6703776Z Cache errors (C/C++)                  1
-2026-03-29T06:36:00.6718579Z Compilations                          2
-2026-03-29T06:36:00.6719043Z Compilation failures                  0
-2026-03-29T06:36:00.6719853Z Non-cacheable compilations            0
-2026-03-29T06:36:00.6720153Z Non-cacheable calls                   0
-2026-03-29T06:36:00.6720480Z Non-compilation calls                 0
-2026-03-29T06:36:00.6720738Z Unsupported compiler calls            0
-2026-03-29T06:36:00.6720997Z Average cache write               0.004 s
-2026-03-29T06:36:00.6721267Z Average compiler                  2.356 s
-2026-03-29T06:36:00.6721619Z Average cache read hit            0.000 s
-2026-03-29T06:36:00.6721884Z Failed distributed compilations       0
-2026-03-29T06:36:00.6722337Z Cache location                  Local disk: "/home/runner/work/python-runtime-mod/python-runtime-mod/.sccache"
-2026-03-29T06:36:00.6722810Z Use direct/preprocessor mode?   yes
-2026-03-29T06:36:00.6723067Z Version (client)                0.10.0
-2026-03-29T06:36:00.6723308Z Cache size                           70 MiB
-2026-03-29T06:36:00.6723554Z Max cache size                       10 GiB
-2026-03-29T06:36:00.6724016Z ##[endgroup]
-2026-03-29T06:36:00.6762241Z Save cache using key "sccache-android64-v1-2026-03-29T06:36:00.675Z".
-2026-03-29T06:36:00.6897789Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/python-runtime-mod/python-runtime-mod --files-from manifest.txt --use-compress-program zstdmt
-2026-03-29T06:36:01.9335253Z Sent 22872064 of 73751848 (31.0%), 21.8 MBs/sec
-2026-03-29T06:36:02.7748144Z Sent 73751848 of 73751848 (100.0%), 38.2 MBs/sec
+﻿2026-03-29T07:16:47.9483851Z Post job cleanup.
+2026-03-29T07:16:47.9523541Z Post job cleanup.
+2026-03-29T07:16:48.0864108Z ##[group]sccache stats
+2026-03-29T07:16:48.0878583Z [command]/usr/local/bin/sccache -s
+2026-03-29T07:16:48.0906100Z Compile requests                     22
+2026-03-29T07:16:48.0906604Z Compile requests executed            22
+2026-03-29T07:16:48.0907254Z Cache hits                           20
+2026-03-29T07:16:48.0907794Z Cache hits (C/C++)                   20
+2026-03-29T07:16:48.0908202Z Cache misses                          1
+2026-03-29T07:16:48.0908619Z Cache misses (C/C++)                  1
+2026-03-29T07:16:48.0908866Z Cache hits rate                   95.24 %
+2026-03-29T07:16:48.0909119Z Cache hits rate (C/C++)           95.24 %
+2026-03-29T07:16:48.0909363Z Cache timeouts                        0
+2026-03-29T07:16:48.0909699Z Cache read errors                     0
+2026-03-29T07:16:48.0910158Z Forced recaches                       0
+2026-03-29T07:16:48.0910526Z Cache write errors                    0
+2026-03-29T07:16:48.0926732Z Cache errors                          1
+2026-03-29T07:16:48.0927044Z Cache errors (C/C++)                  1
+2026-03-29T07:16:48.0927407Z Compilations                          1
+2026-03-29T07:16:48.0927690Z Compilation failures                  0
+2026-03-29T07:16:48.0927950Z Non-cacheable compilations            0
+2026-03-29T07:16:48.0928340Z Non-cacheable calls                   0
+2026-03-29T07:16:48.0928593Z Non-compilation calls                 0
+2026-03-29T07:16:48.0928846Z Unsupported compiler calls            0
+2026-03-29T07:16:48.0929240Z Average cache write               0.008 s
+2026-03-29T07:16:48.0929510Z Average compiler                  4.884 s
+2026-03-29T07:16:48.0929907Z Average cache read hit            0.000 s
+2026-03-29T07:16:48.0930180Z Failed distributed compilations       0
+2026-03-29T07:16:48.0930761Z Cache location                  Local disk: "/home/runner/work/python-runtime-mod/python-runtime-mod/.sccache"
+2026-03-29T07:16:48.0931365Z Use direct/preprocessor mode?   yes
+2026-03-29T07:16:48.0931649Z Version (client)                0.10.0
+2026-03-29T07:16:48.0931899Z Cache size                          100 MiB
+2026-03-29T07:16:48.0932400Z Max cache size                       10 GiB
+2026-03-29T07:16:48.0932912Z ##[endgroup]
+2026-03-29T07:16:48.0977438Z Save cache using key "sccache-android64-v1-2026-03-29T07:16:48.097Z".
+2026-03-29T07:16:48.1125829Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/python-runtime-mod/python-runtime-mod --files-from manifest.txt --use-compress-program zstdmt
+2026-03-29T07:16:49.3683448Z Sent 102891520 of 105282005 (97.7%), 98.0 MBs/sec
+2026-03-29T07:16:49.4571867Z Sent 105282005 of 105282005 (100.0%), 92.2 MBs/sec

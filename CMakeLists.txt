@@ -4,26 +4,6 @@ cmake_minimum_required(VERSION 3.21)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-if (APPLE)
-    if (IOS)
-        set(CMAKE_OSX_ARCHITECTURES "arm64")
-    else()
-        # On GitHub Actions macOS runners, Python is often single-arch.
-        # We try to detect the architecture of the Python library to avoid linking errors.
-        set(CMAKE_OSX_ARCHITECTURES "arm64;x86_64")
-        if (Python3_ROOT_DIR)
-            message(STATUS "Mac: Python3_ROOT_DIR is set, checking architecture...")
-            # If we're on a Silicon Mac runner (arm64), and Python is arm64, 
-            # building for x86_64 will fail unless we have a universal Python.
-            # For simplicity, if we are in CI, we'll just target the current arch.
-            if (DEFINED ENV{GITHUB_ACTIONS})
-                set(CMAKE_OSX_ARCHITECTURES "arm64")
-                message(STATUS "CI detected: Targeting arm64 only for macOS build.")
-            endif()
-        endif()
-    endif()
-endif()
-
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
 if (Python3_ROOT_DIR)
@@ -44,18 +24,24 @@ if (ANDROID OR IOS)
         target_include_directories(Python3_Mobile INTERFACE ${PREBUILT_PYTHON_PATH}/include)
         
         if (ANDROID)
-            # Use a slightly more flexible search for the .so
             find_library(PYTHON_LIB python3.11 PATHS ${PREBUILT_PYTHON_PATH}/lib NO_DEFAULT_PATH)
             if (NOT PYTHON_LIB)
                 find_library(PYTHON_LIB python3 PATHS ${PREBUILT_PYTHON_PATH}/lib NO_DEFAULT_PATH)
             endif()
             target_link_libraries(Python3_Mobile INTERFACE ${PYTHON_LIB})
         elseif (IOS)
-            target_link_libraries(Python3_Mobile INTERFACE ${PREBUILT_PYTHON_PATH}/lib/libpython3.a)
+            # iOS usually uses static linking for embedded Python
+            find_library(PYTHON_LIB python3.11 PATHS ${PREBUILT_PYTHON_PATH}/lib NO_DEFAULT_PATH)
+            if (NOT PYTHON_LIB)
+                find_library(PYTHON_LIB python3 PATHS ${PREBUILT_PYTHON_PATH}/lib NO_DEFAULT_PATH)
+            endif()
+            target_link_libraries(Python3_Mobile INTERFACE ${PYTHON_LIB})
         endif()
         set(PYTHON_TARGET Python3_Mobile)
     else()
-        message(FATAL_ERROR "Python Runtime requires a prebuilt Python for mobile platforms. Please provide PREBUILT_PYTHON_PATH.")
+        message(STATUS "Python Runtime will attempt to find Python despite no PREBUILT_PYTHON_PATH provided.")
+        find_package(Python3 REQUIRED COMPONENTS Development.Embed)
+        set(PYTHON_TARGET Python3::Python)
     endif()
 else()
     find_package(Python3 REQUIRED COMPONENTS Interpreter Development.Embed)

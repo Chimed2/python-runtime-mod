@@ -1,670 +1,667 @@
-﻿2026-03-29T06:35:12.6168798Z ##[group]Run geode-sdk/build-geode-mod@main
-2026-03-29T06:35:12.6169120Z with:
-2026-03-29T06:35:12.6169487Z   combine: true
-2026-03-29T06:35:12.6169672Z   target: Android64
-2026-03-29T06:35:12.6169847Z   sdk: given
-2026-03-29T06:35:12.6170007Z   cli: latest
-2026-03-29T06:35:12.6170171Z   build-config: Release
-2026-03-29T06:35:12.6170363Z   path: ./
-2026-03-29T06:35:12.6170530Z   bindings: geode-sdk/bindings
-2026-03-29T06:35:12.6170748Z   android-min-sdk: 23
-2026-03-29T06:35:12.6170953Z   ccache-variant: default
-2026-03-29T06:35:12.6171171Z   use-cpm-cache: true
-2026-03-29T06:35:12.6171353Z   export-pdb: false
-2026-03-29T06:35:12.6171535Z   export-debug: false
-2026-03-29T06:35:12.6171712Z   use-lto: true
-2026-03-29T06:35:12.6171874Z   bundle-pdb: false
-2026-03-29T06:35:12.6172054Z   export-symbols: false
-2026-03-29T06:35:12.6172239Z ##[endgroup]
-2026-03-29T06:35:12.6280721Z ##[group]Run DEFAULT_TARGET=Win64
-2026-03-29T06:35:12.6281397Z [36;1mDEFAULT_TARGET=Win64[0m
-2026-03-29T06:35:12.6281841Z [36;1mDEFAULT_CCACHE=sccache[0m
-2026-03-29T06:35:12.6282348Z [36;1mif [ "$RUNNER_OS" = "Linux" ]; then[0m
-2026-03-29T06:35:12.6282884Z [36;1m  ID=linux[0m
-2026-03-29T06:35:12.6283259Z [36;1m  DEFAULT_TARGET=Android64[0m
-2026-03-29T06:35:12.6283762Z [36;1melif [ "$RUNNER_OS" = "Windows" ]; then[0m
-2026-03-29T06:35:12.6284252Z [36;1m  ID=win[0m
-2026-03-29T06:35:12.6284569Z [36;1m  DEFAULT_TARGET=Win64[0m
-2026-03-29T06:35:12.6284976Z [36;1melif [ "$RUNNER_OS" = "macOS" ]; then[0m
-2026-03-29T06:35:12.6285460Z [36;1m  ID=mac[0m
-2026-03-29T06:35:12.6285657Z [36;1m  DEFAULT_TARGET=MacOS[0m
-2026-03-29T06:35:12.6285891Z [36;1m  DEFAULT_CCACHE=[0m
-2026-03-29T06:35:12.6286091Z [36;1mfi[0m
-2026-03-29T06:35:12.6286247Z [36;1m[0m
-2026-03-29T06:35:12.6286414Z [36;1mCCACHE_VARIANT=default[0m
-2026-03-29T06:35:12.6286668Z [36;1mif [ "$CCACHE_VARIANT" = "default" ]; then[0m
-2026-03-29T06:35:12.6286953Z [36;1m  CCACHE_VARIANT=$DEFAULT_CCACHE[0m
-2026-03-29T06:35:12.6287204Z [36;1mfi[0m
-2026-03-29T06:35:12.6287366Z [36;1m[0m
-2026-03-29T06:35:12.6287520Z [36;1mTARGET=Android64[0m
-2026-03-29T06:35:12.6287735Z [36;1mif [ "$TARGET" = "" ]; then[0m
-2026-03-29T06:35:12.6287973Z [36;1m  TARGET=$DEFAULT_TARGET[0m
-2026-03-29T06:35:12.6288193Z [36;1mfi[0m
-2026-03-29T06:35:12.6288346Z [36;1m[0m
-2026-03-29T06:35:12.6288642Z [36;1mif [ "$TARGET" = "Android32" ]; then[0m
-2026-03-29T06:35:12.6288971Z [36;1m  OUTPUT_ID=android32[0m
-2026-03-29T06:35:12.6289446Z [36;1melif [ "$TARGET" = "Android64" ]; then[0m
-2026-03-29T06:35:12.6289752Z [36;1m  OUTPUT_ID=android64[0m
-2026-03-29T06:35:12.6289984Z [36;1melif [ "$TARGET" = "Win64" ]; then[0m
-2026-03-29T06:35:12.6290229Z [36;1m  OUTPUT_ID=win[0m
-2026-03-29T06:35:12.6290437Z [36;1melif [ "$TARGET" = "MacOS" ]; then[0m
-2026-03-29T06:35:12.6290678Z [36;1m  OUTPUT_ID=mac[0m
-2026-03-29T06:35:12.6290884Z [36;1melif [ "$TARGET" = "iOS" ]; then[0m
-2026-03-29T06:35:12.6291115Z [36;1m  OUTPUT_ID=ios[0m
-2026-03-29T06:35:12.6291298Z [36;1mfi[0m
-2026-03-29T06:35:12.6291448Z [36;1m[0m
-2026-03-29T06:35:12.6291621Z [36;1mecho "id=$ID" >> $GITHUB_OUTPUT[0m
-2026-03-29T06:35:12.6291888Z [36;1mecho "target=$TARGET" >> $GITHUB_OUTPUT[0m
-2026-03-29T06:35:12.6292194Z [36;1mecho "target_id=$OUTPUT_ID" >> $GITHUB_OUTPUT[0m
-2026-03-29T06:35:12.6292534Z [36;1mecho "ccache_variant=$CCACHE_VARIANT" >> $GITHUB_OUTPUT[0m
-2026-03-29T06:35:12.6322820Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
-2026-03-29T06:35:12.6323177Z ##[endgroup]
-2026-03-29T06:35:12.6497247Z ##[group]Run hendrikmuhs/ccache-action@v1
-2026-03-29T06:35:12.6497521Z with:
-2026-03-29T06:35:12.6497679Z   variant: sccache
-2026-03-29T06:35:12.6497858Z   key: android64-v1
-2026-03-29T06:35:12.6498034Z   restore: true
-2026-03-29T06:35:12.6498199Z   max-size: 500MB
-2026-03-29T06:35:12.6498371Z   verbose: 0
-2026-03-29T06:35:12.6498526Z   save: true
-2026-03-29T06:35:12.6498698Z   append-timestamp: true
-2026-03-29T06:35:12.6498902Z   create-symlink: false
-2026-03-29T06:35:12.6499113Z   job-summary: CCache Statistics
-2026-03-29T06:35:12.6499871Z   update-package-index: false
-2026-03-29T06:35:12.6500091Z ##[endgroup]
-2026-03-29T06:35:12.7784713Z ##[group]Install sccache
-2026-03-29T06:35:12.7814460Z [command]/usr/bin/sh -xc curl -L 'https://github.com/mozilla/sccache/releases/download/v0.10.0/sccache-v0.10.0-x86_64-unknown-linux-musl.tar.gz' | tar xzf - -O --wildcards '*/sccache' > '/usr/local/bin/sccache'
-2026-03-29T06:35:12.7855424Z + curl -L https://github.com/mozilla/sccache/releases/download/v0.10.0/sccache-v0.10.0-x86_64-unknown-linux-musl.tar.gz
-2026-03-29T06:35:12.7858115Z + tar xzf - -O --wildcards */sccache
-2026-03-29T06:35:12.7896674Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-2026-03-29T06:35:12.7898150Z                                  Dload  Upload   Total   Spent    Left  Speed
-2026-03-29T06:35:12.7898619Z 
-2026-03-29T06:35:12.8383329Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-2026-03-29T06:35:12.9436253Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-2026-03-29T06:35:12.9438277Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-2026-03-29T06:35:13.2810084Z 
-2026-03-29T06:35:13.2818850Z 100 9062k  100 9062k    0     0  18.0M      0 --:--:-- --:--:-- --:--:-- 18.0M
-2026-03-29T06:35:13.3275403Z [command]/usr/bin/sh -xc chmod +x '/usr/local/bin/sccache'
-2026-03-29T06:35:13.3298055Z + chmod +x /usr/local/bin/sccache
-2026-03-29T06:35:13.3326707Z 
-2026-03-29T06:35:13.3344794Z ##[endgroup]
-2026-03-29T06:35:13.3345615Z ##[group]Restore cache
-2026-03-29T06:35:13.4764879Z Cache hit for restore-key: sccache-android64-v1-2026-03-29T06:27:40.598Z
-2026-03-29T06:35:14.3013073Z Received 42257835 of 42257835 (100.0%), 59.9 MBs/sec
-2026-03-29T06:35:14.3013999Z Cache Size: ~40 MB (42257835 B)
-2026-03-29T06:35:14.3047808Z [command]/usr/bin/tar -xf /home/runner/work/_temp/bb45199c-735b-46d9-93e0-3ad800b79cdd/cache.tzst -P -C /home/runner/work/python-runtime-mod/python-runtime-mod --use-compress-program unzstd
-2026-03-29T06:35:14.3622908Z Cache restored successfully
-2026-03-29T06:35:14.3645575Z Restored from cache key "sccache-android64-v1-2026-03-29T06:27:40.598Z".
-2026-03-29T06:35:14.3646801Z ##[endgroup]
-2026-03-29T06:35:14.3647370Z ##[group]Configure sccache, linux
-2026-03-29T06:35:14.3662064Z [command]/usr/bin/sh -xc env SCCACHE_IDLE_TIMEOUT=0 SCCACHE_DIR='/home/runner/work/python-runtime-mod/python-runtime-mod/.sccache' SCCACHE_CACHE_SIZE='500MB' sccache --start-server
-2026-03-29T06:35:14.3691768Z + env SCCACHE_IDLE_TIMEOUT=0 SCCACHE_DIR=/home/runner/work/python-runtime-mod/python-runtime-mod/.sccache SCCACHE_CACHE_SIZE=500MB sccache --start-server
-2026-03-29T06:35:14.3709965Z sccache: Starting the server...
-2026-03-29T06:35:14.3754071Z sccache: Listening on address 127.0.0.1:4226
-2026-03-29T06:35:14.3776674Z [command]/usr/bin/sh -xc sccache -z
-2026-03-29T06:35:14.3807791Z + sccache -z
-2026-03-29T06:35:14.3821776Z Statistics zeroed.
-2026-03-29T06:35:14.3850435Z ##[endgroup]
-2026-03-29T06:35:14.4690385Z ##[group]Run actions/cache@v4
-2026-03-29T06:35:14.4690656Z with:
-2026-03-29T06:35:14.4690953Z   path: /home/runner/work/python-runtime-mod/python-runtime-mod/cpm-cache
-2026-03-29T06:35:14.4691524Z   key: cpm-android64-v1-f90cf2ed01f4584bc7e7495d9fa14b6c2d77b1d0aedfa3515a468deaa3a00eb3
-2026-03-29T06:35:14.4691996Z   restore-keys: cpm-android64-v1-
+﻿2026-03-29T07:15:58.6939894Z ##[group]Run geode-sdk/build-geode-mod@main
+2026-03-29T07:15:58.6940381Z with:
+2026-03-29T07:15:58.6940636Z   combine: true
+2026-03-29T07:15:58.6940909Z   target: Android64
+2026-03-29T07:15:58.6941177Z   sdk: given
+2026-03-29T07:15:58.6941435Z   cli: latest
+2026-03-29T07:15:58.6941704Z   build-config: Release
+2026-03-29T07:15:58.6941995Z   path: ./
+2026-03-29T07:15:58.6942583Z   bindings: geode-sdk/bindings
+2026-03-29T07:15:58.6942935Z   android-min-sdk: 23
+2026-03-29T07:15:58.6943234Z   ccache-variant: default
+2026-03-29T07:15:58.6943629Z   use-cpm-cache: true
+2026-03-29T07:15:58.6943934Z   export-pdb: false
+2026-03-29T07:15:58.6944219Z   export-debug: false
+2026-03-29T07:15:58.6944501Z   use-lto: true
+2026-03-29T07:15:58.6944765Z   bundle-pdb: false
+2026-03-29T07:15:58.6945044Z   export-symbols: false
+2026-03-29T07:15:58.6945326Z ##[endgroup]
+2026-03-29T07:15:58.7061378Z ##[group]Run DEFAULT_TARGET=Win64
+2026-03-29T07:15:58.7061879Z [36;1mDEFAULT_TARGET=Win64[0m
+2026-03-29T07:15:58.7062623Z [36;1mDEFAULT_CCACHE=sccache[0m
+2026-03-29T07:15:58.7063125Z [36;1mif [ "$RUNNER_OS" = "Linux" ]; then[0m
+2026-03-29T07:15:58.7063498Z [36;1m  ID=linux[0m
+2026-03-29T07:15:58.7063810Z [36;1m  DEFAULT_TARGET=Android64[0m
+2026-03-29T07:15:58.7064196Z [36;1melif [ "$RUNNER_OS" = "Windows" ]; then[0m
+2026-03-29T07:15:58.7064579Z [36;1m  ID=win[0m
+2026-03-29T07:15:58.7064867Z [36;1m  DEFAULT_TARGET=Win64[0m
+2026-03-29T07:15:58.7065230Z [36;1melif [ "$RUNNER_OS" = "macOS" ]; then[0m
+2026-03-29T07:15:58.7065595Z [36;1m  ID=mac[0m
+2026-03-29T07:15:58.7065890Z [36;1m  DEFAULT_TARGET=MacOS[0m
+2026-03-29T07:15:58.7066229Z [36;1m  DEFAULT_CCACHE=[0m
+2026-03-29T07:15:58.7066543Z [36;1mfi[0m
+2026-03-29T07:15:58.7066801Z [36;1m[0m
+2026-03-29T07:15:58.7067083Z [36;1mCCACHE_VARIANT=default[0m
+2026-03-29T07:15:58.7067459Z [36;1mif [ "$CCACHE_VARIANT" = "default" ]; then[0m
+2026-03-29T07:15:58.7067878Z [36;1m  CCACHE_VARIANT=$DEFAULT_CCACHE[0m
+2026-03-29T07:15:58.7068224Z [36;1mfi[0m
+2026-03-29T07:15:58.7068484Z [36;1m[0m
+2026-03-29T07:15:58.7068751Z [36;1mTARGET=Android64[0m
+2026-03-29T07:15:58.7069067Z [36;1mif [ "$TARGET" = "" ]; then[0m
+2026-03-29T07:15:58.7069421Z [36;1m  TARGET=$DEFAULT_TARGET[0m
+2026-03-29T07:15:58.7069730Z [36;1mfi[0m
+2026-03-29T07:15:58.7069980Z [36;1m[0m
+2026-03-29T07:15:58.7070259Z [36;1mif [ "$TARGET" = "Android32" ]; then[0m
+2026-03-29T07:15:58.7070635Z [36;1m  OUTPUT_ID=android32[0m
+2026-03-29T07:15:58.7070995Z [36;1melif [ "$TARGET" = "Android64" ]; then[0m
+2026-03-29T07:15:58.7071365Z [36;1m  OUTPUT_ID=android64[0m
+2026-03-29T07:15:58.7071711Z [36;1melif [ "$TARGET" = "Win64" ]; then[0m
+2026-03-29T07:15:58.7072056Z [36;1m  OUTPUT_ID=win[0m
+2026-03-29T07:15:58.7072532Z [36;1melif [ "$TARGET" = "MacOS" ]; then[0m
+2026-03-29T07:15:58.7072878Z [36;1m  OUTPUT_ID=mac[0m
+2026-03-29T07:15:58.7073270Z [36;1melif [ "$TARGET" = "iOS" ]; then[0m
+2026-03-29T07:15:58.7073619Z [36;1m  OUTPUT_ID=ios[0m
+2026-03-29T07:15:58.7073907Z [36;1mfi[0m
+2026-03-29T07:15:58.7074166Z [36;1m[0m
+2026-03-29T07:15:58.7074434Z [36;1mecho "id=$ID" >> $GITHUB_OUTPUT[0m
+2026-03-29T07:15:58.7074819Z [36;1mecho "target=$TARGET" >> $GITHUB_OUTPUT[0m
+2026-03-29T07:15:58.7075244Z [36;1mecho "target_id=$OUTPUT_ID" >> $GITHUB_OUTPUT[0m
+2026-03-29T07:15:58.7075709Z [36;1mecho "ccache_variant=$CCACHE_VARIANT" >> $GITHUB_OUTPUT[0m
+2026-03-29T07:15:58.7107719Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-03-29T07:15:58.7108201Z ##[endgroup]
+2026-03-29T07:15:58.7306956Z ##[group]Run hendrikmuhs/ccache-action@v1
+2026-03-29T07:15:58.7307345Z with:
+2026-03-29T07:15:58.7307591Z   variant: sccache
+2026-03-29T07:15:58.7307861Z   key: android64-v1
+2026-03-29T07:15:58.7308125Z   restore: true
+2026-03-29T07:15:58.7308381Z   max-size: 500MB
+2026-03-29T07:15:58.7308642Z   verbose: 0
+2026-03-29T07:15:58.7308880Z   save: true
+2026-03-29T07:15:58.7309144Z   append-timestamp: true
+2026-03-29T07:15:58.7309441Z   create-symlink: false
+2026-03-29T07:15:58.7309747Z   job-summary: CCache Statistics
+2026-03-29T07:15:58.7310334Z   update-package-index: false
+2026-03-29T07:15:58.7310645Z ##[endgroup]
+2026-03-29T07:15:58.8572673Z ##[group]Install sccache
+2026-03-29T07:15:58.8605529Z [command]/usr/bin/sh -xc curl -L 'https://github.com/mozilla/sccache/releases/download/v0.10.0/sccache-v0.10.0-x86_64-unknown-linux-musl.tar.gz' | tar xzf - -O --wildcards '*/sccache' > '/usr/local/bin/sccache'
+2026-03-29T07:15:58.8650355Z + curl -L https://github.com/mozilla/sccache/releases/download/v0.10.0/sccache-v0.10.0-x86_64-unknown-linux-musl.tar.gz
+2026-03-29T07:15:58.8651871Z + tar xzf - -O --wildcards */sccache
+2026-03-29T07:15:58.8691465Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2026-03-29T07:15:58.8692624Z                                  Dload  Upload   Total   Spent    Left  Speed
+2026-03-29T07:15:58.8693159Z 
+2026-03-29T07:15:58.9972488Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-03-29T07:15:58.9973475Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-03-29T07:15:59.2268045Z 
+2026-03-29T07:15:59.2273965Z 100 9062k  100 9062k    0     0  24.7M      0 --:--:-- --:--:-- --:--:-- 24.7M
+2026-03-29T07:15:59.2674550Z [command]/usr/bin/sh -xc chmod +x '/usr/local/bin/sccache'
+2026-03-29T07:15:59.2697589Z + chmod +x /usr/local/bin/sccache
+2026-03-29T07:15:59.2725378Z 
+2026-03-29T07:15:59.2741017Z ##[endgroup]
+2026-03-29T07:15:59.2741866Z ##[group]Restore cache
+2026-03-29T07:15:59.3714386Z Cache hit for restore-key: sccache-android64-v1-2026-03-29T06:36:00.675Z
+2026-03-29T07:15:59.8314327Z Received 73751848 of 73751848 (100.0%), 165.9 MBs/sec
+2026-03-29T07:15:59.8315282Z Cache Size: ~70 MB (73751848 B)
+2026-03-29T07:15:59.8353585Z [command]/usr/bin/tar -xf /home/runner/work/_temp/97c35f3f-d99a-41db-9b7f-c4321c042e96/cache.tzst -P -C /home/runner/work/python-runtime-mod/python-runtime-mod --use-compress-program unzstd
+2026-03-29T07:15:59.9549239Z Cache restored successfully
+2026-03-29T07:15:59.9601128Z Restored from cache key "sccache-android64-v1-2026-03-29T06:36:00.675Z".
+2026-03-29T07:15:59.9604649Z ##[endgroup]
+2026-03-29T07:15:59.9605607Z ##[group]Configure sccache, linux
+2026-03-29T07:15:59.9621721Z [command]/usr/bin/sh -xc env SCCACHE_IDLE_TIMEOUT=0 SCCACHE_DIR='/home/runner/work/python-runtime-mod/python-runtime-mod/.sccache' SCCACHE_CACHE_SIZE='500MB' sccache --start-server
+2026-03-29T07:15:59.9655871Z + env SCCACHE_IDLE_TIMEOUT=0 SCCACHE_DIR=/home/runner/work/python-runtime-mod/python-runtime-mod/.sccache SCCACHE_CACHE_SIZE=500MB sccache --start-server
+2026-03-29T07:15:59.9678002Z sccache: Starting the server...
+2026-03-29T07:15:59.9745962Z sccache: Listening on address 127.0.0.1:4226
+2026-03-29T07:15:59.9804964Z [command]/usr/bin/sh -xc sccache -z
+2026-03-29T07:15:59.9837585Z + sccache -z
+2026-03-29T07:15:59.9858640Z Statistics zeroed.
+2026-03-29T07:15:59.9865665Z ##[endgroup]
+2026-03-29T07:16:00.1035646Z ##[group]Run actions/cache@v4
+2026-03-29T07:16:00.1035980Z with:
+2026-03-29T07:16:00.1036322Z   path: /home/runner/work/python-runtime-mod/python-runtime-mod/cpm-cache
+2026-03-29T07:16:00.1036943Z   key: cpm-android64-v1-5fc2bee27240c34d433ac8b3f793845b40741292cf03c7521bc318dcf55171c4
+2026-03-29T07:16:00.1037460Z   restore-keys: cpm-android64-v1-
 
-2026-03-29T06:35:14.4692264Z   enableCrossOsArchive: false
-2026-03-29T06:35:14.4692497Z   fail-on-cache-miss: false
-2026-03-29T06:35:14.4692929Z   lookup-only: false
-2026-03-29T06:35:14.4693130Z   save-always: false
-2026-03-29T06:35:14.4693349Z ##[endgroup]
-2026-03-29T06:35:14.7277730Z Cache not found for input keys: cpm-android64-v1-f90cf2ed01f4584bc7e7495d9fa14b6c2d77b1d0aedfa3515a468deaa3a00eb3, cpm-android64-v1-
-2026-03-29T06:35:14.7341087Z ##[group]Run curl -L https://github.com/ninja-build/ninja/releases/latest/download/ninja-linux.zip -o ninja.zip
-2026-03-29T06:35:14.7341916Z [36;1mcurl -L https://github.com/ninja-build/ninja/releases/latest/download/ninja-linux.zip -o ninja.zip[0m
-2026-03-29T06:35:14.7342692Z [36;1m7z x ninja.zip -o"$GITHUB_WORKSPACE/ninja"[0m
-2026-03-29T06:35:14.7343070Z [36;1mecho "$GITHUB_WORKSPACE/ninja" >> $GITHUB_PATH[0m
-2026-03-29T06:35:14.7370739Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
-2026-03-29T06:35:14.7371069Z ##[endgroup]
-2026-03-29T06:35:14.7465411Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-2026-03-29T06:35:14.7466194Z                                  Dload  Upload   Total   Spent    Left  Speed
-2026-03-29T06:35:14.7466673Z 
-2026-03-29T06:35:14.8213762Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-2026-03-29T06:35:14.8685674Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-2026-03-29T06:35:14.8686594Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-2026-03-29T06:35:14.9441271Z 
-2026-03-29T06:35:14.9441796Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-2026-03-29T06:35:15.0255597Z 
-2026-03-29T06:35:15.0256122Z 100  130k  100  130k    0     0   468k      0 --:--:-- --:--:-- --:--:--  468k
-2026-03-29T06:35:15.1867580Z 
-2026-03-29T06:35:15.1868333Z 7-Zip 23.01 (x64) : Copyright (c) 1999-2023 Igor Pavlov : 2023-06-20
-2026-03-29T06:35:15.1869130Z  64-bit locale=C.UTF-8 Threads:4 OPEN_MAX:65536
-2026-03-29T06:35:15.1869910Z 
-2026-03-29T06:35:15.1870043Z Scanning the drive for archives:
-2026-03-29T06:35:15.1870357Z 1 file, 134040 bytes (131 KiB)
-2026-03-29T06:35:15.1870575Z 
-2026-03-29T06:35:15.1870682Z Extracting archive: ninja.zip
-2026-03-29T06:35:15.1893011Z --
-2026-03-29T06:35:15.1893345Z Path = ninja.zip
-2026-03-29T06:35:15.1893726Z Type = zip
-2026-03-29T06:35:15.1894017Z Physical Size = 134040
-2026-03-29T06:35:15.1894256Z 
-2026-03-29T06:35:15.1894413Z Everything is Ok
-2026-03-29T06:35:15.1894615Z 
-2026-03-29T06:35:15.1894731Z Size:       290928
-2026-03-29T06:35:15.1895008Z Compressed: 134040
-2026-03-29T06:35:15.1977128Z ##[group]Run geode-sdk/cli/.github/actions/setup@main
-2026-03-29T06:35:15.1977446Z with:
-2026-03-29T06:35:15.1977626Z   version: latest
-2026-03-29T06:35:15.1977803Z ##[endgroup]
-2026-03-29T06:35:15.1992151Z ##[group]Run if [ "$RUNNER_OS" = "Linux" ]; then
-2026-03-29T06:35:15.1992463Z [36;1mif [ "$RUNNER_OS" = "Linux" ]; then[0m
-2026-03-29T06:35:15.1992740Z [36;1m  echo "host=linux" >> $GITHUB_OUTPUT[0m
-2026-03-29T06:35:15.1993022Z [36;1melif [ "$RUNNER_OS" = "Windows" ]; then[0m
-2026-03-29T06:35:15.1993327Z [36;1m  echo "host=win" >> $GITHUB_OUTPUT[0m
-2026-03-29T06:35:15.1993600Z [36;1melif [ "$RUNNER_OS" = "macOS" ]; then[0m
-2026-03-29T06:35:15.1993870Z [36;1m  echo "host=mac" >> $GITHUB_OUTPUT[0m
-2026-03-29T06:35:15.1994122Z [36;1mfi[0m
-2026-03-29T06:35:15.2021137Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
-2026-03-29T06:35:15.2021462Z ##[endgroup]
-2026-03-29T06:35:15.2108334Z ##[group]Run robinraju/release-downloader@v1.10
-2026-03-29T06:35:15.2108613Z with:
-2026-03-29T06:35:15.2108789Z   repository: geode-sdk/cli
-2026-03-29T06:35:15.2109005Z   latest: true
-2026-03-29T06:35:15.2109392Z   fileName: *-linux.zip
-2026-03-29T06:35:15.2109644Z   tarBall: false
-2026-03-29T06:35:15.2109820Z   zipBall: false
-2026-03-29T06:35:15.2110013Z   out-file-path: my-epic-geode-cli
-2026-03-29T06:35:15.2110252Z   preRelease: false
-2026-03-29T06:35:15.2110436Z   extract: false
-2026-03-29T06:35:15.2110700Z   token: ***
-2026-03-29T06:35:15.2110897Z   github-api-url: https://api.github.com
-2026-03-29T06:35:15.2111338Z ##[endgroup]
-2026-03-29T06:35:15.3022117Z Fetching latest release for repo geode-sdk/cli
-2026-03-29T06:35:15.5142956Z Found latest release version: v3.7.4
-2026-03-29T06:35:15.5150398Z Downloading file: geode-cli-v3.7.4-linux.zip to: /home/runner/work/python-runtime-mod/python-runtime-mod/my-epic-geode-cli
-2026-03-29T06:35:15.8475898Z Done: /home/runner/work/python-runtime-mod/python-runtime-mod/my-epic-geode-cli/geode-cli-v3.7.4-linux.zip
-2026-03-29T06:35:15.8576785Z ##[group]Run 7z x "my-epic-geode-cli/*-linux.zip" -omy-epic-geode-cli
-2026-03-29T06:35:15.8577864Z [36;1m7z x "my-epic-geode-cli/*-linux.zip" -omy-epic-geode-cli[0m
-2026-03-29T06:35:15.8578479Z [36;1mchmod +x my-epic-geode-cli/geode[0m
-2026-03-29T06:35:15.8579061Z [36;1mecho "$GITHUB_WORKSPACE/my-epic-geode-cli" >> $GITHUB_PATH[0m
-2026-03-29T06:35:15.8620690Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
-2026-03-29T06:35:15.8621280Z ##[endgroup]
-2026-03-29T06:35:15.8714433Z 
-2026-03-29T06:35:15.8714796Z 7-Zip 23.01 (x64) : Copyright (c) 1999-2023 Igor Pavlov : 2023-06-20
-2026-03-29T06:35:15.8715497Z  64-bit locale=C.UTF-8 Threads:4 OPEN_MAX:65536
-2026-03-29T06:35:15.8715872Z 
-2026-03-29T06:35:15.8716033Z Scanning the drive for archives:
-2026-03-29T06:35:15.8716456Z 1 file, 7767899 bytes (7586 KiB)
-2026-03-29T06:35:15.8716704Z 
-2026-03-29T06:35:15.8716995Z Extracting archive: my-epic-geode-cli/geode-cli-v3.7.4-linux.zip
-2026-03-29T06:35:15.9967554Z --
-2026-03-29T06:35:15.9968091Z Path = my-epic-geode-cli/geode-cli-v3.7.4-linux.zip
-2026-03-29T06:35:15.9968738Z Type = zip
-2026-03-29T06:35:15.9969106Z Physical Size = 7767899
-2026-03-29T06:35:15.9969646Z 
-2026-03-29T06:35:15.9969815Z Everything is Ok
-2026-03-29T06:35:15.9970134Z 
-2026-03-29T06:35:15.9970325Z Size:       21053808
-2026-03-29T06:35:15.9970723Z Compressed: 7767899
-2026-03-29T06:35:16.0022572Z ##[group]Run export CLI_PROFILE="/home/runner/work/python-runtime-mod/python-runtime-mod/cli-profile"
-2026-03-29T06:35:16.0023305Z [36;1mexport CLI_PROFILE="/home/runner/work/python-runtime-mod/python-runtime-mod/cli-profile"[0m
-2026-03-29T06:35:16.0023766Z [36;1m# for windows[0m
-2026-03-29T06:35:16.0024008Z [36;1mmkdir -p "$CLI_PROFILE/geode/mods"[0m
-2026-03-29T06:35:16.0024270Z [36;1m# for mac[0m
-2026-03-29T06:35:16.0024503Z [36;1mmkdir -p "$CLI_PROFILE/Contents/geode/mods"[0m
-2026-03-29T06:35:16.0024918Z [36;1mgeode profile add --name GithubActions "$CLI_PROFILE/GeometryDash.exe" win[0m
-2026-03-29T06:35:16.0025294Z [36;1m[0m
-2026-03-29T06:35:16.0025667Z [36;1mgeode sdk install "/home/runner/work/python-runtime-mod/python-runtime-mod/geode-sdk-clone"[0m
-2026-03-29T06:35:16.0026141Z [36;1m[0m
-2026-03-29T06:35:16.0026355Z [36;1m# silly github actions wont refresh the env[0m
-2026-03-29T06:35:16.0026824Z [36;1mexport GEODE_SDK="/home/runner/work/python-runtime-mod/python-runtime-mod/geode-sdk-clone"[0m
-2026-03-29T06:35:16.0027307Z [36;1mecho "GEODE_SDK=$GEODE_SDK" >> $GITHUB_ENV[0m
-2026-03-29T06:35:16.0027567Z [36;1m[0m
-2026-03-29T06:35:16.0027746Z [36;1mif [ "given" == "nightly" ]; then[0m
-2026-03-29T06:35:16.0028010Z [36;1m  geode sdk update nightly[0m
-2026-03-29T06:35:16.0028307Z [36;1m  geode sdk install-binaries --platform android64[0m
-2026-03-29T06:35:16.0028642Z [36;1melif [ "given" == "latest" ]; then[0m
-2026-03-29T06:35:16.0028903Z [36;1m  geode sdk update stable[0m
-2026-03-29T06:35:16.0029394Z [36;1m  geode sdk install-binaries --platform android64[0m
-2026-03-29T06:35:16.0029717Z [36;1melif [ "given" == "given" ]; then[0m
-2026-03-29T06:35:16.0030222Z [36;1m  export MOD_JSON_PATH=$(find . -name "mod.json" -not -path "./geode-sdk-clone/*" -print | sort -r | head -n 1)[0m
-2026-03-29T06:35:16.0030815Z [36;1m  export TARGET_GEODE_VERSION=$(jq -r '.geode' $MOD_JSON_PATH)[0m
-2026-03-29T06:35:16.0031266Z [36;1m  echo "Updating to version $TARGET_GEODE_VERSION from $MOD_JSON_PATH"[0m
-2026-03-29T06:35:16.0031675Z [36;1m  geode sdk update "$TARGET_GEODE_VERSION"[0m
-2026-03-29T06:35:16.0032117Z [36;1m  geode sdk install-binaries --platform android64 --version "$TARGET_GEODE_VERSION"[0m
-2026-03-29T06:35:16.0032717Z [36;1melse[0m
-2026-03-29T06:35:16.0032901Z [36;1m  geode sdk update given[0m
-2026-03-29T06:35:16.0033195Z [36;1m  geode sdk install-binaries --platform android64[0m
-2026-03-29T06:35:16.0033478Z [36;1mfi[0m
-2026-03-29T06:35:16.0033637Z [36;1m[0m
-2026-03-29T06:35:16.0033991Z [36;1mexport CPM_CACHE="/home/runner/work/python-runtime-mod/python-runtime-mod/cpm-cache"[0m
-2026-03-29T06:35:16.0034473Z [36;1mecho "CPM_SOURCE_CACHE=$CPM_CACHE" >> $GITHUB_ENV[0m
-2026-03-29T06:35:16.0062366Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
-2026-03-29T06:35:16.0062695Z ##[endgroup]
-2026-03-29T06:35:16.0155520Z | Done | A new profile named 'GithubActions' has been created
-2026-03-29T06:35:16.0180447Z | Info | Downloading SDK
-2026-03-29T06:35:16.2735642Z | Info | Enumerating objects: 58053, done.
-2026-03-29T06:35:16.2739979Z | Info | Counting objects:   0% (1/241)
-2026-03-29T06:35:16.2740473Z | Info | Counting objects:   1% (3/241)
-2026-03-29T06:35:16.2741020Z | Info | Counting objects:   2% (5/241)
-2026-03-29T06:35:16.2741581Z | Info | Counting objects:   3% (8/241)
-2026-03-29T06:35:16.2742185Z Counting objects:   4% (10/241)
-2026-03-29T06:35:16.2742590Z | Info | Counting objects:   5% (13/241)
-2026-03-29T06:35:16.2743031Z | Info | Counting objects:   6% (15/241)
-2026-03-29T06:35:16.2743311Z | Info | Counting objects:   7% (17/241)
-2026-03-29T06:35:16.2743592Z | Info | Counting objects:   8% (20/241)
-2026-03-29T06:35:16.2743860Z | Info | Counting objects:   9% (22/241)
-2026-03-29T06:35:16.2744146Z | Info | Counting objects:  10% (25/241)
-2026-03-29T06:35:16.2744414Z Counting objects:  11% (27/241)
-2026-03-29T06:35:16.2744662Z | Info | Counting objects:  12% (29/241)
-2026-03-29T06:35:16.2744929Z Counting objects:  13% (32/241)
-2026-03-29T06:35:16.2745179Z | Info | Counting objects:  14% (34/241)
-2026-03-29T06:35:16.2745445Z Counting objects:  15% (37/241)
-2026-03-29T06:35:16.2745678Z Counting objects:  16% (39/241)
-2026-03-29T06:35:16.2745925Z | Info | Counting objects:  17% (41/241)
-2026-03-29T06:35:16.2746196Z | Info | Counting objects:  18% (44/241)
-2026-03-29T06:35:16.2746453Z Counting objects:  19% (46/241)
-2026-03-29T06:35:16.2746700Z | Info | Counting objects:  20% (49/241)
-2026-03-29T06:35:16.2746965Z Counting objects:  21% (51/241)
-2026-03-29T06:35:16.2747203Z | Info | Counting objects:  22% (54/241)
-2026-03-29T06:35:16.2747470Z Counting objects:  23% (56/241)
-2026-03-29T06:35:16.2747715Z | Info | Counting objects:  24% (58/241)
-2026-03-29T06:35:16.2747978Z Counting objects:  25% (61/241)
-2026-03-29T06:35:16.2748221Z | Info | Counting objects:  26% (63/241)
-2026-03-29T06:35:16.2748486Z Counting objects:  27% (66/241)
-2026-03-29T06:35:16.2748722Z | Info | Counting objects:  28% (68/241)
-2026-03-29T06:35:16.2748993Z Counting objects:  29% (70/241)
-2026-03-29T06:35:16.2749488Z Counting objects:  30% (73/241)
-2026-03-29T06:35:16.2749739Z | Info | Counting objects:  31% (75/241)
-2026-03-29T06:35:16.2750003Z | Info | Counting objects:  32% (78/241)
-2026-03-29T06:35:16.2750277Z Counting objects:  33% (80/241)
-2026-03-29T06:35:16.2750513Z Counting objects:  34% (82/241)
-2026-03-29T06:35:16.2750752Z | Info | Counting objects:  35% (85/241)
-2026-03-29T06:35:16.2751032Z | Info | Counting objects:  36% (87/241)
-2026-03-29T06:35:16.2751309Z | Info | Counting objects:  37% (90/241)
-2026-03-29T06:35:16.2751601Z Counting objects:  38% (92/241)
-2026-03-29T06:35:16.2751841Z Counting objects:  39% (94/241)
-2026-03-29T06:35:16.2752086Z | Info | Counting objects:  40% (97/241)
-2026-03-29T06:35:16.2752354Z Counting objects:  41% (99/241)
-2026-03-29T06:35:16.2752589Z | Info | Counting objects:  42% (102/241)
-2026-03-29T06:35:16.2752847Z Counting objects:  43% (104/241)
-2026-03-29T06:35:16.2753077Z | Info | Counting objects:  44% (107/241)
-2026-03-29T06:35:16.2753316Z Counting objects:  45% (109/241)
-2026-03-29T06:35:16.2753536Z | Info | Counting objects:  46% (111/241)
-2026-03-29T06:35:16.2753771Z Counting objects:  47% (114/241)
-2026-03-29T06:35:16.2754257Z | Info | Counting objects:  48% (116/241)
-2026-03-29T06:35:16.2754498Z | Info | Counting objects:  49% (119/241)
-2026-03-29T06:35:16.2754730Z Counting objects:  50% (121/241)
-2026-03-29T06:35:16.2754942Z | Info | Counting objects:  51% (123/241)
-2026-03-29T06:35:16.2755176Z Counting objects:  52% (126/241)
-2026-03-29T06:35:16.2860265Z | Info | Counting objects:  53% (128/241)
-2026-03-29T06:35:16.2860848Z | Info | Counting objects:  54% (131/241)
-2026-03-29T06:35:16.2861362Z Counting objects:  55% (133/241)
-2026-03-29T06:35:16.2862037Z | Info | Counting objects:  56% (135/241)
-2026-03-29T06:35:16.2862430Z | Info | Counting objects:  57% (138/241)
-2026-03-29T06:35:16.2862744Z Counting objects:  58% (140/241)
-2026-03-29T06:35:16.2863046Z | Info | Counting objects:  59% (143/241)
-2026-03-29T06:35:16.2863359Z Counting objects:  60% (145/241)
-2026-03-29T06:35:16.2863661Z | Info | Counting objects:  61% (148/241)
-2026-03-29T06:35:16.2863997Z Counting objects:  62% (150/241)
-2026-03-29T06:35:16.2864303Z | Info | Counting objects:  63% (152/241)
-2026-03-29T06:35:16.2864734Z Counting objects:  64% (155/241)
-2026-03-29T06:35:16.2865060Z | Info | Counting objects:  65% (157/241)
-2026-03-29T06:35:16.2865372Z Counting objects:  66% (160/241)
-2026-03-29T06:35:16.2865665Z | Info | Counting objects:  67% (162/241)
-2026-03-29T06:35:16.2865971Z Counting objects:  68% (164/241)
-2026-03-29T06:35:16.2866371Z | Info | Counting objects:  69% (167/241)
-2026-03-29T06:35:16.2866744Z Counting objects:  70% (169/241)
-2026-03-29T06:35:16.2867181Z | Info | Counting objects:  71% (172/241)
-2026-03-29T06:35:16.2867816Z Counting objects:  72% (174/241)
-2026-03-29T06:35:16.2868235Z | Info | Counting objects:  73% (176/241)
-2026-03-29T06:35:16.2868649Z Counting objects:  74% (179/241)
-2026-03-29T06:35:16.2869108Z | Info | Counting objects:  75% (181/241)
-2026-03-29T06:35:16.2870115Z Counting objects:  76% (184/241)
-2026-03-29T06:35:16.2870529Z | Info | Counting objects:  77% (186/241)
-2026-03-29T06:35:16.2871079Z | Info | Counting objects:  78% (188/241)
-2026-03-29T06:35:16.2871976Z Counting objects:  79% (191/241)
-2026-03-29T06:35:16.2872685Z Counting objects:  80% (193/241)
-2026-03-29T06:35:16.2873353Z | Info | Counting objects:  81% (196/241)
-2026-03-29T06:35:16.2873902Z Counting objects:  82% (198/241)
-2026-03-29T06:35:16.2874314Z | Info | Counting objects:  83% (201/241)
-2026-03-29T06:35:16.2874780Z | Info | Counting objects:  84% (203/241)
-2026-03-29T06:35:16.2875081Z Counting objects:  85% (205/241)
-2026-03-29T06:35:16.2875383Z | Info | Counting objects:  86% (208/241)
-2026-03-29T06:35:16.2875795Z Counting objects:  87% (210/241)
-2026-03-29T06:35:16.2876075Z | Info | Counting objects:  88% (213/241)
-2026-03-29T06:35:16.2876400Z | Info | Counting objects:  89% (215/241)
-2026-03-29T06:35:16.2876830Z Counting objects:  90% (217/241)
-2026-03-29T06:35:16.2877147Z | Info | Counting objects:  91% (220/241)
-2026-03-29T06:35:16.2891483Z Counting objects:  92% (222/241)
-2026-03-29T06:35:16.2891812Z | Info | Counting objects:  93% (225/241)
-2026-03-29T06:35:16.2892093Z Counting objects:  94% (227/241)
-2026-03-29T06:35:16.2892340Z | Info | Counting objects:  95% (229/241)
-2026-03-29T06:35:16.2892779Z | Info | Counting objects:  96% (232/241)
-2026-03-29T06:35:16.2893045Z Counting objects:  97% (234/241)
-2026-03-29T06:35:16.2893280Z | Info | Counting objects:  98% (237/241)
-2026-03-29T06:35:16.2893559Z | Info | Counting objects:  99% (239/241)
-2026-03-29T06:35:16.2893836Z | Info | Counting objects: 100% (241/241)
-2026-03-29T06:35:16.2894103Z | Info | Counting objects: 100% (241/241), done.
-2026-03-29T06:35:16.2932069Z | Info | Compressing objects:   0% (1/118)
-2026-03-29T06:35:16.2932572Z Compressing objects:   1% (2/118)
-2026-03-29T06:35:16.2932988Z | Info | Compressing objects:   2% (3/118)
-2026-03-29T06:35:16.2933269Z | Info | Compressing objects:   3% (4/118)
-2026-03-29T06:35:16.2933529Z | Info | Compressing objects:   4% (5/118)
-2026-03-29T06:35:16.2933790Z | Info | Compressing objects:   5% (6/118)
-2026-03-29T06:35:16.2934047Z | Info | Compressing objects:   6% (8/118)
-2026-03-29T06:35:16.2934505Z | Info | Compressing objects:   7% (9/118)
-2026-03-29T06:35:16.2934767Z | Info | Compressing objects:   8% (10/118)
-2026-03-29T06:35:16.2935032Z | Info | Compressing objects:   9% (11/118)
-2026-03-29T06:35:16.2935301Z | Info | Compressing objects:  10% (12/118)
-2026-03-29T06:35:16.2935555Z | Info | Compressing objects:  11% (13/118)
-2026-03-29T06:35:16.2935804Z | Info | Compressing objects:  12% (15/118)
-2026-03-29T06:35:16.2936053Z | Info | Compressing objects:  13% (16/118)
-2026-03-29T06:35:16.2936411Z | Info | Compressing objects:  14% (17/118)
-2026-03-29T06:35:16.2936660Z | Info | Compressing objects:  15% (18/118)
-2026-03-29T06:35:16.2936910Z | Info | Compressing objects:  16% (19/118)
-2026-03-29T06:35:16.2937155Z | Info | Compressing objects:  17% (21/118)
-2026-03-29T06:35:16.2937687Z | Info | Compressing objects:  18% (22/118)
-2026-03-29T06:35:16.2937941Z | Info | Compressing objects:  19% (23/118)
-2026-03-29T06:35:16.2938244Z | Info | Compressing objects:  20% (24/118)
-2026-03-29T06:35:16.2938698Z | Info | Compressing objects:  21% (25/118)
-2026-03-29T06:35:16.2939130Z | Info | Compressing objects:  22% (26/118)
-2026-03-29T06:35:16.2939809Z | Info | Compressing objects:  23% (28/118)
-2026-03-29T06:35:16.2940062Z | Info | Compressing objects:  24% (29/118)
-2026-03-29T06:35:16.2940313Z | Info | Compressing objects:  25% (30/118)
-2026-03-29T06:35:16.2940563Z | Info | Compressing objects:  26% (31/118)
-2026-03-29T06:35:16.2940802Z Compressing objects:  27% (32/118)
-2026-03-29T06:35:16.2941057Z | Info | Compressing objects:  28% (34/118)
-2026-03-29T06:35:16.2941309Z | Info | Compressing objects:  29% (35/118)
-2026-03-29T06:35:16.2941559Z | Info | Compressing objects:  30% (36/118)
-2026-03-29T06:35:16.2941801Z | Info | Compressing objects:  31% (37/118)
-2026-03-29T06:35:16.2942049Z | Info | Compressing objects:  32% (38/118)
-2026-03-29T06:35:16.2942307Z | Info | Compressing objects:  33% (39/118)
-2026-03-29T06:35:16.2942547Z | Info | Compressing objects:  34% (41/118)
-2026-03-29T06:35:16.2942798Z | Info | Compressing objects:  35% (42/118)
-2026-03-29T06:35:16.2943050Z | Info | Compressing objects:  36% (43/118)
-2026-03-29T06:35:16.2943293Z | Info | Compressing objects:  37% (44/118)
-2026-03-29T06:35:16.2943545Z | Info | Compressing objects:  38% (45/118)
-2026-03-29T06:35:16.2943793Z | Info | Compressing objects:  39% (47/118)
-2026-03-29T06:35:16.2944046Z | Info | Compressing objects:  40% (48/118)
-2026-03-29T06:35:16.2944288Z | Info | Compressing objects:  41% (49/118)
-2026-03-29T06:35:16.2944541Z | Info | Compressing objects:  42% (50/118)
-2026-03-29T06:35:16.2944791Z | Info | Compressing objects:  43% (51/118)
-2026-03-29T06:35:16.2945034Z | Info | Compressing objects:  44% (52/118)
-2026-03-29T06:35:16.2945285Z | Info | Compressing objects:  45% (54/118)
-2026-03-29T06:35:16.2945533Z | Info | Compressing objects:  46% (55/118)
-2026-03-29T06:35:16.2945773Z | Info | Compressing objects:  47% (56/118)
-2026-03-29T06:35:16.2946027Z | Info | Compressing objects:  48% (57/118)
-2026-03-29T06:35:16.2946281Z | Info | Compressing objects:  49% (58/118)
-2026-03-29T06:35:16.2946524Z | Info | Compressing objects:  50% (59/118)
-2026-03-29T06:35:16.2946783Z | Info | Compressing objects:  51% (61/118)
-2026-03-29T06:35:16.2947036Z | Info | Compressing objects:  52% (62/118)
-2026-03-29T06:35:16.2947284Z | Info | Compressing objects:  53% (63/118)
-2026-03-29T06:35:16.2947527Z | Info | Compressing objects:  54% (64/118)
-2026-03-29T06:35:16.2947772Z | Info | Compressing objects:  55% (65/118)
-2026-03-29T06:35:16.2948027Z | Info | Compressing objects:  56% (67/118)
-2026-03-29T06:35:16.2948443Z | Info | Compressing objects:  57% (68/118)
-2026-03-29T06:35:16.2948691Z | Info | Compressing objects:  58% (69/118)
-2026-03-29T06:35:16.2949053Z | Info | Compressing objects:  59% (70/118)
-2026-03-29T06:35:16.2949656Z | Info | Compressing objects:  60% (71/118)
-2026-03-29T06:35:16.2950102Z | Info | Compressing objects:  61% (72/118)
-2026-03-29T06:35:16.2950431Z | Info | Compressing objects:  62% (74/118)
-2026-03-29T06:35:16.2950853Z | Info | Compressing objects:  63% (75/118)
-2026-03-29T06:35:16.2951098Z Compressing objects:  64% (76/118)
-2026-03-29T06:35:16.2951334Z | Info | Compressing objects:  65% (77/118)
-2026-03-29T06:35:16.2951582Z | Info | Compressing objects:  66% (78/118)
-2026-03-29T06:35:16.2951823Z | Info | Compressing objects:  67% (80/118)
-2026-03-29T06:35:16.2952073Z | Info | Compressing objects:  68% (81/118)
-2026-03-29T06:35:16.2952336Z | Info | Compressing objects:  69% (82/118)
-2026-03-29T06:35:16.2953012Z | Info | Compressing objects:  70% (83/118)
-2026-03-29T06:35:16.2953289Z | Info | Compressing objects:  71% (84/118)
-2026-03-29T06:35:16.2953718Z | Info | Compressing objects:  72% (85/118)
-2026-03-29T06:35:16.2954157Z | Info | Compressing objects:  73% (87/118)
-2026-03-29T06:35:16.2954581Z | Info | Compressing objects:  74% (88/118)
-2026-03-29T06:35:16.2954848Z | Info | Compressing objects:  75% (89/118)
-2026-03-29T06:35:16.2955101Z | Info | Compressing objects:  76% (90/118)
-2026-03-29T06:35:16.2955893Z | Info | Compressing objects:  77% (91/118)
-2026-03-29T06:35:16.2956150Z | Info | Compressing objects:  78% (93/118)
-2026-03-29T06:35:16.2956399Z | Info | Compressing objects:  79% (94/118)
-2026-03-29T06:35:16.2956797Z | Info | Compressing objects:  80% (95/118)
-2026-03-29T06:35:16.2957047Z | Info | Compressing objects:  81% (96/118)
-2026-03-29T06:35:16.2957300Z | Info | Compressing objects:  82% (97/118)
-2026-03-29T06:35:16.2957543Z | Info | Compressing objects:  83% (98/118)
-2026-03-29T06:35:16.2957805Z | Info | Compressing objects:  84% (100/118)
-2026-03-29T06:35:16.2958066Z | Info | Compressing objects:  85% (101/118)
-2026-03-29T06:35:16.2958323Z | Info | Compressing objects:  86% (102/118)
-2026-03-29T06:35:16.2958572Z | Info | Compressing objects:  87% (103/118)
-2026-03-29T06:35:16.2958825Z | Info | Compressing objects:  88% (104/118)
-2026-03-29T06:35:16.2959079Z | Info | Compressing objects:  89% (106/118)
-2026-03-29T06:35:16.2959564Z | Info | Compressing objects:  90% (107/118)
-2026-03-29T06:35:16.2959823Z | Info | Compressing objects:  91% (108/118)
-2026-03-29T06:35:16.2960081Z | Info | Compressing objects:  92% (109/118)
-2026-03-29T06:35:16.2960335Z | Info | Compressing objects:  93% (110/118)
-2026-03-29T06:35:16.2960584Z | Info | Compressing objects:  94% (111/118)
-2026-03-29T06:35:16.2960830Z | Info | Compressing objects:  95% (113/118)
-2026-03-29T06:35:16.2961085Z | Info | Compressing objects:  96% (114/118)
-2026-03-29T06:35:16.2961335Z | Info | Compressing objects:  97% (115/118)
-2026-03-29T06:35:16.2961585Z | Info | Compressing objects:  98% (116/118)
-2026-03-29T06:35:16.2961833Z | Info | Compressing objects:  99% (117/118)
-2026-03-29T06:35:16.2962079Z | Info | Compressing objects: 100% (118/118)
-2026-03-29T06:35:16.2962345Z | Info | Compressing objects: 100% (118/118), done.
-2026-03-29T06:35:23.6480327Z | Info | Total 58053 (delta 168), reused 140 (delta 123), pack-reused 57812 (from 2)
-2026-03-29T06:35:26.7449610Z | Info | Set GEODE_SDK environment variable automatically
-2026-03-29T06:35:26.9094627Z | Info | Updating head
-2026-03-29T06:35:26.9395306Z | Done | Updated head to v5.4.1
-2026-03-29T06:35:26.9395761Z | Done | Successfully installed SDK
-2026-03-29T06:35:26.9396255Z | Info | Please restart your command line to have the GEODE_SDK enviroment variable set.
-2026-03-29T06:35:26.9397075Z | Info | Use `geode sdk install-binaries` to install pre-built binaries
-2026-03-29T06:35:26.9536885Z Updating to version 5.4.1 from ./mod.json
-2026-03-29T06:35:26.9560344Z | Info | Switching to 5.4.1
-2026-03-29T06:35:26.9560780Z | Info | Updating SDK
-2026-03-29T06:35:27.1418966Z | Info | Updating head
-2026-03-29T06:35:27.1827192Z | Info | Switched to 5.4.1
-2026-03-29T06:35:27.1827633Z | Done | Successfully updated SDK.
-2026-03-29T06:35:27.1864427Z | Info | Installing binaries for 5.4.1
-2026-03-29T06:35:27.4049153Z | Info | Found binaries for platform "android64"
-2026-03-29T06:35:27.4049988Z | Info | Downloading
-2026-03-29T06:35:27.8991140Z | Done | Binaries installed
-2026-03-29T06:35:27.9043117Z ##[group]Run mkdir -p $HOME/.cache
-2026-03-29T06:35:27.9043478Z [36;1mmkdir -p $HOME/.cache[0m
-2026-03-29T06:35:27.9043712Z [36;1m[0m
-2026-03-29T06:35:27.9043930Z [36;1mNDK_PATH="/usr/local/lib/android/sdk/ndk/"[0m
-2026-03-29T06:35:27.9044220Z [36;1mif [ "" = "" ]; then[0m
-2026-03-29T06:35:27.9044473Z [36;1m  NDK_PATH="$ANDROID_NDK_LATEST_HOME"[0m
-2026-03-29T06:35:27.9044731Z [36;1mfi[0m
-2026-03-29T06:35:27.9044892Z [36;1m[0m
-2026-03-29T06:35:27.9045051Z [36;1mcd "./"[0m
-2026-03-29T06:35:27.9045430Z [36;1mCMAKE_EXTRA_ARGS=""[0m
-2026-03-29T06:35:27.9045661Z [36;1mif [ android64 = "mac" ]; then[0m
-2026-03-29T06:35:27.9046326Z [36;1m  CMAKE_EXTRA_ARGS="-DCMAKE_OSX_DEPLOYMENT_TARGET=11.0 -DGEODE_DISABLE_PRECOMPILED_HEADERS=OFF -DCMAKE_AR='/usr/bin/ar' -DCMAKE_RANLIB='/usr/bin/ranlib'"[0m
-2026-03-29T06:35:27.9046989Z [36;1melif [ android64 = "android32" ]; then[0m
-2026-03-29T06:35:27.9047711Z [36;1m  CMAKE_EXTRA_ARGS="-DCMAKE_TOOLCHAIN_FILE=$NDK_PATH/build/cmake/android.toolchain.cmake -DANDROID_STL=c++_shared -DANDROID_ABI=armeabi-v7a -DANDROID_PLATFORM=android-23"[0m
-2026-03-29T06:35:27.9048454Z [36;1melif [ android64 = "android64" ]; then[0m
-2026-03-29T06:35:27.9049171Z [36;1m  CMAKE_EXTRA_ARGS="-DCMAKE_TOOLCHAIN_FILE=$NDK_PATH/build/cmake/android.toolchain.cmake -DANDROID_STL=c++_shared -DANDROID_ABI=arm64-v8a -DANDROID_PLATFORM=android-23"[0m
-2026-03-29T06:35:27.9050239Z [36;1melif [ android64 = "ios" ]; then[0m
-2026-03-29T06:35:27.9050767Z [36;1m  CMAKE_EXTRA_ARGS="-DCMAKE_SYSTEM_NAME=iOS -DGEODE_TARGET_PLATFORM=iOS -DGEODE_DISABLE_PRECOMPILED_HEADERS=OFF"[0m
-2026-03-29T06:35:27.9051280Z [36;1mfi[0m
-2026-03-29T06:35:27.9051464Z [36;1mif [ "true" = "true" ]; then[0m
-2026-03-29T06:35:27.9051851Z [36;1m  CMAKE_EXTRA_ARGS="$CMAKE_EXTRA_ARGS -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON"[0m
-2026-03-29T06:35:27.9052230Z [36;1mfi[0m
-2026-03-29T06:35:27.9052450Z [36;1mif [ "false" = "true" ] && [ linux = "win" ]; then[0m
-2026-03-29T06:35:27.9052825Z [36;1m  CMAKE_EXTRA_ARGS="$CMAKE_EXTRA_ARGS -DGEODE_BUNDLE_PDB=ON"[0m
-2026-03-29T06:35:27.9053147Z [36;1mfi[0m
-2026-03-29T06:35:27.9053321Z [36;1mif [ -n "sccache" ]; then[0m
-2026-03-29T06:35:27.9053575Z [36;1m  CCACHE_PATH="$(which "sccache")"[0m
-2026-03-29T06:35:27.9054130Z [36;1m  CMAKE_EXTRA_ARGS="$CMAKE_EXTRA_ARGS -DCMAKE_C_COMPILER_LAUNCHER=${CCACHE_PATH} -DCMAKE_CXX_COMPILER_LAUNCHER=${CCACHE_PATH}"[0m
-2026-03-29T06:35:27.9054652Z [36;1mfi[0m
-2026-03-29T06:35:27.9055622Z [36;1mcmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DGEODE_CODEGEN_CMAKE_ARGS="-DCMAKE_C_COMPILER=clang;-DCMAKE_CXX_COMPILER=clang++;-G Ninja" -G Ninja $CMAKE_EXTRA_ARGS -DGEODE_DONT_INSTALL_MODS=ON -DGEODE_TARGET_PLATFORM=Android64 [0m
-2026-03-29T06:35:27.9056753Z [36;1mcmake --build build --config Release  --parallel[0m
-2026-03-29T06:35:27.9057049Z [36;1m[0m
-2026-03-29T06:35:27.9057357Z [36;1mmkdir "/home/runner/work/python-runtime-mod/python-runtime-mod/output"[0m
-2026-03-29T06:35:27.9057725Z [36;1m[0m
-2026-03-29T06:35:27.9057937Z [36;1mfor file in $(find ./build -name *.geode); do[0m
-2026-03-29T06:35:27.9058353Z [36;1m  cp $file "/home/runner/work/python-runtime-mod/python-runtime-mod/output"[0m
-2026-03-29T06:35:27.9058780Z [36;1m  if [ linux = "linux" ] && [ "false" = "true" ]; then[0m
-2026-03-29T06:35:27.9059169Z [36;1m    if [ android64 = "android32" ] || [ android64 = "android64" ]; then[0m
-2026-03-29T06:35:27.9059795Z [36;1m      SO_FILE_NAME="$(basename $file .geode).android64.so"[0m
-2026-03-29T06:35:27.9060145Z [36;1m      if [ -f "./build/$SO_FILE_NAME" ]; then[0m
-2026-03-29T06:35:27.9060708Z [36;1m        dump_syms ./build/$SO_FILE_NAME -o "/home/runner/work/python-runtime-mod/python-runtime-mod/output/$SO_FILE_NAME.sym"[0m
-2026-03-29T06:35:27.9061248Z [36;1m      fi[0m
-2026-03-29T06:35:27.9061425Z [36;1m    fi[0m
-2026-03-29T06:35:27.9061588Z [36;1m  fi[0m
-2026-03-29T06:35:27.9061760Z [36;1mdone[0m
-2026-03-29T06:35:27.9061932Z [36;1m[0m
-2026-03-29T06:35:27.9062250Z [36;1mif [ linux = "win" ]; then[0m
-2026-03-29T06:35:27.9062499Z [36;1m  if [ "false" = "true" ]; then[0m
-2026-03-29T06:35:27.9062800Z [36;1m    for file in $(find ./build -name *.pdb); do[0m
-2026-03-29T06:35:27.9063217Z [36;1m      cp $file "/home/runner/work/python-runtime-mod/python-runtime-mod/output"[0m
-2026-03-29T06:35:27.9063595Z [36;1m    done[0m
-2026-03-29T06:35:27.9063775Z [36;1m  fi[0m
-2026-03-29T06:35:27.9063940Z [36;1mfi[0m
-2026-03-29T06:35:27.9064094Z [36;1m[0m
-2026-03-29T06:35:27.9064370Z [36;1mif [ "false" = "true" ]; then[0m
-2026-03-29T06:35:27.9064658Z [36;1m  for file in $(find ./build -name *.pdb); do[0m
-2026-03-29T06:35:27.9065063Z [36;1m    cp $file "/home/runner/work/python-runtime-mod/python-runtime-mod/output"[0m
-2026-03-29T06:35:27.9065434Z [36;1m  done[0m
-2026-03-29T06:35:27.9065652Z [36;1m  for file in $(find ./build -name *.dbg); do[0m
-2026-03-29T06:35:27.9066047Z [36;1m    cp $file "/home/runner/work/python-runtime-mod/python-runtime-mod/output"[0m
-2026-03-29T06:35:27.9066413Z [36;1m  done[0m
-2026-03-29T06:35:27.9066625Z [36;1m  for dir in $(find ./build -name *.dSYM); do[0m
-2026-03-29T06:35:27.9067030Z [36;1m    cp -R $dir "/home/runner/work/python-runtime-mod/python-runtime-mod/output"[0m
-2026-03-29T06:35:27.9067406Z [36;1m  done[0m
-2026-03-29T06:35:27.9067605Z [36;1mfi[0m
-2026-03-29T06:35:27.9067764Z [36;1m[0m
-2026-03-29T06:35:27.9068072Z [36;1mOUTPUT_DIR="/home/runner/work/python-runtime-mod/python-runtime-mod/output"[0m
-2026-03-29T06:35:27.9068470Z [36;1mif [ linux = "mac" ]; then[0m
-2026-03-29T06:35:27.9068900Z [36;1m  OUTPUT_DIR=$(python3 -c 'import os, sys; print(os.path.realpath(sys.argv[1]))' "$OUTPUT_DIR")[0m
-2026-03-29T06:35:27.9069523Z [36;1melif [ linux = "win" ]; then[0m
-2026-03-29T06:35:27.9069798Z [36;1m  OUTPUT_DIR=$(cygpath -wa "$OUTPUT_DIR")[0m
-2026-03-29T06:35:27.9070062Z [36;1melse[0m
-2026-03-29T06:35:27.9070263Z [36;1m  OUTPUT_DIR=$(realpath "$OUTPUT_DIR")[0m
-2026-03-29T06:35:27.9070516Z [36;1mfi[0m
-2026-03-29T06:35:27.9070726Z [36;1mecho "output=$OUTPUT_DIR" >> $GITHUB_OUTPUT[0m
-2026-03-29T06:35:27.9098425Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
-2026-03-29T06:35:27.9098748Z env:
-2026-03-29T06:35:27.9099079Z   GEODE_SDK: /home/runner/work/python-runtime-mod/python-runtime-mod/geode-sdk-clone
-2026-03-29T06:35:27.9099899Z   CPM_SOURCE_CACHE: /home/runner/work/python-runtime-mod/python-runtime-mod/cpm-cache
-2026-03-29T06:35:27.9100315Z ##[endgroup]
-2026-03-29T06:35:28.5711539Z -- Found Python3: /usr/bin/python3.12 (found version "3.12.3") found components: Interpreter Development.Embed
-2026-03-29T06:35:28.5714163Z CMake Warning (dev) at /usr/local/share/cmake-3.31/Modules/FindPython/Support.cmake:4064 (add_library):
-2026-03-29T06:35:28.5714849Z   ADD_LIBRARY called with SHARED option but the target platform does not
-2026-03-29T06:35:28.5715390Z   support dynamic linking.  Building a STATIC library instead.  This may lead
-2026-03-29T06:35:28.5715814Z   to problems.
-2026-03-29T06:35:28.5716040Z Call Stack (most recent call first):
-2026-03-29T06:35:28.5716528Z   /usr/local/share/cmake-3.31/Modules/FindPython/Support.cmake:4153 (__python_import_library)
-2026-03-29T06:35:28.5717114Z   /usr/local/share/cmake-3.31/Modules/FindPython3.cmake:602 (include)
-2026-03-29T06:35:28.5717504Z   CMakeLists.txt:29 (find_package)
-2026-03-29T06:35:28.5717880Z This warning is for project developers.  Use -Wno-dev to suppress it.
-2026-03-29T06:35:28.5718191Z 
-2026-03-29T06:35:30.8825606Z -- The C compiler identification is Clang 21.0.0
-2026-03-29T06:35:31.1414069Z -- The CXX compiler identification is Clang 21.0.0
-2026-03-29T06:35:31.2588902Z -- Detecting C compiler ABI info
-2026-03-29T06:35:32.5942439Z -- Detecting C compiler ABI info - done
-2026-03-29T06:35:32.6088440Z -- Check for working C compiler: /usr/local/lib/android/sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/bin/clang - skipped
-2026-03-29T06:35:32.6198067Z -- Detecting C compile features
-2026-03-29T06:35:32.6250914Z -- Detecting C compile features - done
-2026-03-29T06:35:32.6863883Z -- Detecting CXX compiler ABI info
-2026-03-29T06:35:32.9379853Z -- Detecting CXX compiler ABI info - done
-2026-03-29T06:35:32.9531364Z -- Check for working CXX compiler: /usr/local/lib/android/sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ - skipped
-2026-03-29T06:35:32.9534987Z -- Detecting CXX compile features
-2026-03-29T06:35:32.9549963Z -- Detecting CXX compile features - done
-2026-03-29T06:35:32.9742614Z -- Found Geode: /home/runner/work/python-runtime-mod/python-runtime-mod/geode-sdk-clone
-2026-03-29T06:35:32.9755607Z -- Version: 5.4.1
-2026-03-29T06:35:33.2082705Z -- No override path for bindings provided, using CPM to clone default. If you would like to use a separate clone of the bindings repo (for example in order to be able to efficiently change and contribute new bindings) then set GEODE_BINDINGS_REPO_PATH to where you have cloned the repository (system environment variables are supported).
-2026-03-29T06:35:33.2084431Z -- CPM: Adding package bindings@ (main)
-2026-03-29T06:35:33.2092442Z -- Populating bindings
-2026-03-29T06:35:33.2716093Z -- Configuring done (0.0s)
-2026-03-29T06:35:33.2771809Z -- Generating done (0.0s)
-2026-03-29T06:35:33.2774824Z -- Build files have been written to: /home/runner/work/python-runtime-mod/python-runtime-mod/build/_deps/bindings-subbuild
-2026-03-29T06:35:33.2858993Z [1/9] Creating directories for 'bindings-populate'
-2026-03-29T06:35:33.2859879Z [1/9] Performing download step (git clone) for 'bindings-populate'
-2026-03-29T06:35:33.2910041Z Cloning into 'bindings-src'...
-2026-03-29T06:35:39.8614755Z Already on 'main'
-2026-03-29T06:35:39.8617397Z Your branch is up to date with 'origin/main'.
-2026-03-29T06:35:39.8884474Z [2/9] Performing update step for 'bindings-populate'
-2026-03-29T06:35:39.8939964Z -- Fetching latest from the remote origin
-2026-03-29T06:35:40.1673297Z [3/9] No patch step for 'bindings-populate'
-2026-03-29T06:35:40.1739726Z [5/9] No configure step for 'bindings-populate'
-2026-03-29T06:35:40.1772814Z [6/9] No build step for 'bindings-populate'
-2026-03-29T06:35:40.1805691Z [7/9] No install step for 'bindings-populate'
-2026-03-29T06:35:40.1838399Z [8/9] No test step for 'bindings-populate'
-2026-03-29T06:35:40.1885281Z [9/9] Completed 'bindings-populate'
-2026-03-29T06:35:40.1899719Z -- Looking for ccache/sccache
-2026-03-29T06:35:40.1900772Z Using sccache with Clang, PCH will be enabled.
-2026-03-29T06:35:40.1901335Z -- Looking for ccache/sccache - detecting variant
-2026-03-29T06:35:40.1902499Z -- Looking for ccache/sccache - detected sccache
-2026-03-29T06:35:40.1903016Z -- Pre-compiled headers - ON
-2026-03-29T06:35:40.1943943Z -- Found Geode CLI: /home/runner/work/python-runtime-mod/python-runtime-mod/my-epic-geode-cli/geode (version 3.7.4)
-2026-03-29T06:35:40.1955559Z -- CPM: Adding package result@1.4.1 (v1.4.1 to /home/runner/work/python-runtime-mod/python-runtime-mod/cpm-cache/result/1b9c)
-2026-03-29T06:35:40.7706633Z -- CPM: Adding package json@3.3.0 (v3.3.0 to /home/runner/work/python-runtime-mod/python-runtime-mod/cpm-cache/json/75ca)
-2026-03-29T06:35:41.1685358Z -- CPM: Adding package nontype_functional@6 (6d1d08c to /home/runner/work/python-runtime-mod/python-runtime-mod/cpm-cache/nontype_functional/aaa0)
-2026-03-29T06:35:41.7093268Z -- CPM: Adding package fmt@12.1.0 (12.1.0 to /home/runner/work/python-runtime-mod/python-runtime-mod/cpm-cache/fmt/6226)
-2026-03-29T06:35:42.4071917Z -- {fmt} version: 12.1.0
-2026-03-29T06:35:42.4072261Z -- Build type: Release
-2026-03-29T06:35:42.4349411Z -- Performing Test HAS_NULLPTR_WARNING
-2026-03-29T06:35:43.7630304Z -- Performing Test HAS_NULLPTR_WARNING - Success
-2026-03-29T06:35:43.7651275Z -- CPM: Adding package asp2@51 (51d3773 to /home/runner/work/python-runtime-mod/python-runtime-mod/cpm-cache/asp2/4dd3)
-2026-03-29T06:35:44.1905037Z -- CPM: Adding package arc@1.5.5 (v1.5.5 to /home/runner/work/python-runtime-mod/python-runtime-mod/cpm-cache/arc/70cb)
-2026-03-29T06:35:44.6453653Z -- Arc features: time
-2026-03-29T06:35:44.6470510Z -- CPM: Adding package TulipHook@3.1.11 (v3.1.11 to /home/runner/work/python-runtime-mod/python-runtime-mod/cpm-cache/tuliphook/37c6)
-2026-03-29T06:35:45.3672449Z -- Performing Test SUPPORTS_W_NO_EVERYTHING
-2026-03-29T06:35:45.4414396Z -- Performing Test SUPPORTS_W_NO_EVERYTHING - Success
-2026-03-29T06:35:45.4428184Z Set SKIP_BUILDING_CODEGEN to OFF to force codegen to build locally.
-2026-03-29T06:35:45.4428811Z -- Downloading Codegen
-2026-03-29T06:35:45.6952994Z -- Downloading Codegen - success
-2026-03-29T06:35:45.6953485Z -- Skipping building Codegen
-2026-03-29T06:35:45.6954163Z -- Running Codegen
-2026-03-29T06:35:46.2209576Z CMake Warning (dev) at geode-sdk-clone/cmake/GeodeFile.cmake:57 (add_custom_command):
-2026-03-29T06:35:46.2211359Z './Codegen' 'Android64' '/home/runner/work/python-runtime-mod/python-runtime-mod/build/_deps/bindings-src/bindings/2.2081' '/home/runner/work/python-runtime-mod/python-runtime-mod/build/bindings/bindings'
-2026-03-29T06:35:46.2212858Z   The following keywords are not supported when using
-2026-03-29T06:35:46.2213236Z   add_custom_command(TARGET): DEPENDS.
-2026-03-29T06:35:46.2213425Z 
-2026-03-29T06:35:46.2213622Z   Policy CMP0175 is not set: add_custom_command() rejects invalid arguments.
-2026-03-29T06:35:46.2214118Z   Run "cmake --help-policy CMP0175" for policy details.  Use the cmake_policy
-2026-03-29T06:35:46.2214536Z   command to set the policy and suppress this warning.
-2026-03-29T06:35:46.2214829Z Call Stack (most recent call first):
-2026-03-29T06:35:46.2215085Z   CMakeLists.txt:53 (setup_geode_mod)
-2026-03-29T06:35:46.2215425Z This warning is for project developers.  Use -Wno-dev to suppress it.
-2026-03-29T06:35:46.2215689Z 
-2026-03-29T06:35:46.2215773Z -- Setting up PythonRuntime
-2026-03-29T06:35:46.2218200Z -- Mod chimed.python_runtime is compiling for Geode version 5.4.1
-2026-03-29T06:35:46.2253981Z -- Skipping installing PythonRuntime
-2026-03-29T06:35:46.2265040Z -- Configuring done (18.0s)
-2026-03-29T06:35:46.4151189Z -- Generating done (0.2s)
-2026-03-29T06:35:46.4157170Z -- Build files have been written to: /home/runner/work/python-runtime-mod/python-runtime-mod/build
-2026-03-29T06:35:46.4343863Z [0/2] Re-checking globbed directories...
-2026-03-29T06:35:48.5547834Z [1/30] Building CXX object _deps/fmt-build/CMakeFiles/fmt.dir/src/os.cc.o
-2026-03-29T06:35:48.6941248Z [2/30] Building CXX object _deps/fmt-build/CMakeFiles/fmt.dir/src/format.cc.o
-2026-03-29T06:35:48.7917972Z [3/30] Building CXX object _deps/asp2-build/CMakeFiles/asp.dir/Unity/unity_0_cxx.cxx.o
-2026-03-29T06:35:48.8843570Z [4/30] Building CXX object _deps/arc-build/CMakeFiles/arc.dir/Unity/unity_0_cxx.cxx.o
-2026-03-29T06:35:49.1275801Z [5/30] Linking CXX static library _deps/fmt-build/libfmt.a
-2026-03-29T06:35:49.1362797Z [6/30] Linking CXX static library _deps/asp2-build/libasp.a
-2026-03-29T06:35:49.1460471Z [7/30] Linking CXX static library _deps/arc-build/libarc.a
-2026-03-29T06:35:49.6063836Z [8/30] Running Codegen
-2026-03-29T06:35:50.2391786Z [9/30] Building CXX object bindings/CMakeFiles/GeodeBindings.dir/Unity/unity_14_cxx.cxx.o
-2026-03-29T06:35:50.2483591Z [10/30] Building CXX object bindings/CMakeFiles/GeodeBindings.dir/Unity/unity_13_cxx.cxx.o
-2026-03-29T06:35:50.2752054Z [11/30] Building CXX object bindings/CMakeFiles/GeodeBindings.dir/Unity/unity_11_cxx.cxx.o
-2026-03-29T06:35:50.7080998Z [12/30] Building CXX object bindings/CMakeFiles/GeodeBindings.dir/Unity/unity_9_cxx.cxx.o
-2026-03-29T06:35:50.7163327Z [13/30] Building CXX object bindings/CMakeFiles/GeodeBindings.dir/Unity/unity_10_cxx.cxx.o
-2026-03-29T06:35:50.7394248Z [14/30] Building CXX object bindings/CMakeFiles/GeodeBindings.dir/Unity/unity_12_cxx.cxx.o
-2026-03-29T06:35:51.1541149Z [15/30] Building CXX object bindings/CMakeFiles/GeodeBindings.dir/Unity/unity_8_cxx.cxx.o
-2026-03-29T06:35:51.1606378Z [16/30] Building CXX object bindings/CMakeFiles/GeodeBindings.dir/Unity/unity_7_cxx.cxx.o
-2026-03-29T06:35:51.1969759Z [17/30] Building CXX object bindings/CMakeFiles/GeodeBindings.dir/Unity/unity_6_cxx.cxx.o
-2026-03-29T06:35:51.5990963Z [18/30] Building CXX object bindings/CMakeFiles/GeodeBindings.dir/Unity/unity_5_cxx.cxx.o
-2026-03-29T06:35:51.6595417Z [19/30] Building CXX object bindings/CMakeFiles/GeodeBindings.dir/Unity/unity_3_cxx.cxx.o
-2026-03-29T06:35:51.6724019Z [20/30] Building CXX object bindings/CMakeFiles/GeodeBindings.dir/Unity/unity_4_cxx.cxx.o
-2026-03-29T06:35:52.0518305Z [21/30] Building CXX object bindings/CMakeFiles/GeodeBindings.dir/Unity/unity_2_cxx.cxx.o
-2026-03-29T06:35:52.0706008Z [22/30] Building CXX object bindings/CMakeFiles/GeodeBindings.dir/Unity/unity_1_cxx.cxx.o
-2026-03-29T06:35:52.1037404Z [23/30] Building CXX object bindings/CMakeFiles/GeodeBindings.dir/Unity/unity_0_cxx.cxx.o
-2026-03-29T06:35:52.1739611Z [24/30] Linking CXX static library bindings/libGeodeBindings.a
-2026-03-29T06:35:59.9289082Z [25/30] Building CXX object CMakeFiles/PythonRuntime.dir/cmake_pch.hxx.pch
-2026-03-29T06:36:00.4642234Z [26/30] Building CXX object CMakeFiles/PythonRuntime.dir/src/main.cpp.o
-2026-03-29T06:36:00.4643060Z FAILED: [code=1] CMakeFiles/PythonRuntime.dir/src/main.cpp.o 
-2026-03-29T06:36:00.4653675Z /usr/local/bin//sccache /usr/local/lib/android/sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android23 --sysroot=/usr/local/lib/android/sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/sysroot -DARC_FEATURE_TIME=1 -DGEODE_COMP_GD_VERSION=22081 -DGEODE_GD_VERSION=2.2081 -DGEODE_GD_VERSION_STRING=\"2.2081\" -DGEODE_MOD_ID=\"chimed.python_runtime\" -DMAT_JSON_DYNAMIC=1 -DPROJECT_NAME=PythonRuntime -DPYTHON_RUNTIME_EXPORT -DPythonRuntime_EXPORTS -I/home/runner/work/python-runtime-mod/python-runtime-mod/geode-sdk-clone/loader/include -I/home/runner/work/python-runtime-mod/python-runtime-mod/geode-sdk-clone/loader/include/Geode/cocos/include -I/home/runner/work/python-runtime-mod/python-runtime-mod/geode-sdk-clone/loader/include/Geode/cocos/extensions -I/home/runner/work/python-runtime-mod/python-runtime-mod/geode-sdk-clone/loader/include/Geode/fmod -isystem /usr/include/python3.12 -isystem /home/runner/work/python-runtime-mod/python-runtime-mod/build/bindings/bindings -isystem /home/runner/work/python-runtime-mod/python-runtime-mod/build/_deps/bindings-src/bindings/include -isystem /home/runner/work/python-runtime-mod/python-runtime-mod/cpm-cache/fmt/6226/include -isystem /home/runner/work/python-runtime-mod/python-runtime-mod/cpm-cache/tuliphook/37c6/include -isystem /home/runner/work/python-runtime-mod/python-runtime-mod/cpm-cache/result/1b9c/include -isystem /home/runner/work/python-runtime-mod/python-runtime-mod/cpm-cache/json/75ca/include -isystem /home/runner/work/python-runtime-mod/python-runtime-mod/cpm-cache/nontype_functional/aaa0/include -isystem /home/runner/work/python-runtime-mod/python-runtime-mod/cpm-cache/asp2/4dd3/include -isystem /home/runner/work/python-runtime-mod/python-runtime-mod/cpm-cache/arc/70cb/include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -O3 -DNDEBUG  -std=gnu++23 -flto=thin -fPIC -fvisibility=hidden -Werror=return-type -ffunction-sections -fdata-sections -Winvalid-pch -Xclang -include-pch -Xclang /home/runner/work/python-runtime-mod/python-runtime-mod/build/CMakeFiles/PythonRuntime.dir/cmake_pch.hxx.pch -Xclang -include -Xclang /home/runner/work/python-runtime-mod/python-runtime-mod/build/CMakeFiles/PythonRuntime.dir/cmake_pch.hxx -MD -MT CMakeFiles/PythonRuntime.dir/src/main.cpp.o -MF CMakeFiles/PythonRuntime.dir/src/main.cpp.o.d -o CMakeFiles/PythonRuntime.dir/src/main.cpp.o -c /home/runner/work/python-runtime-mod/python-runtime-mod/src/main.cpp
-2026-03-29T06:36:00.4663495Z In file included from /home/runner/work/python-runtime-mod/python-runtime-mod/src/main.cpp:3:
-2026-03-29T06:36:00.4663995Z In file included from /usr/include/python3.12/Python.h:12:
-2026-03-29T06:36:00.4664519Z /usr/include/python3.12/pyconfig.h:9:12: fatal error: 'aarch64-linux-gnu/python3.12/pyconfig.h' file not found
-2026-03-29T06:36:00.4665048Z     9 | #  include <aarch64-linux-gnu/python3.12/pyconfig.h>
-2026-03-29T06:36:00.4665660Z       |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2026-03-29T06:36:00.4665909Z 1 error generated.
-2026-03-29T06:36:00.5069168Z [27/30] Building CXX object CMakeFiles/PythonRuntime.dir/geode-sdk-clone/entry.cpp.o
-2026-03-29T06:36:00.5070200Z ninja: build stopped: subcommand failed.
-2026-03-29T06:36:00.5097696Z ##[error]Process completed with exit code 1.
+2026-03-29T07:16:00.1037770Z   enableCrossOsArchive: false
+2026-03-29T07:16:00.1038046Z   fail-on-cache-miss: false
+2026-03-29T07:16:00.1038309Z   lookup-only: false
+2026-03-29T07:16:00.1038547Z   save-always: false
+2026-03-29T07:16:00.1038773Z ##[endgroup]
+2026-03-29T07:16:00.3303368Z Cache not found for input keys: cpm-android64-v1-5fc2bee27240c34d433ac8b3f793845b40741292cf03c7521bc318dcf55171c4, cpm-android64-v1-
+2026-03-29T07:16:00.3377198Z ##[group]Run curl -L https://github.com/ninja-build/ninja/releases/latest/download/ninja-linux.zip -o ninja.zip
+2026-03-29T07:16:00.3378166Z [36;1mcurl -L https://github.com/ninja-build/ninja/releases/latest/download/ninja-linux.zip -o ninja.zip[0m
+2026-03-29T07:16:00.3378797Z [36;1m7z x ninja.zip -o"$GITHUB_WORKSPACE/ninja"[0m
+2026-03-29T07:16:00.3379405Z [36;1mecho "$GITHUB_WORKSPACE/ninja" >> $GITHUB_PATH[0m
+2026-03-29T07:16:00.3409863Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-03-29T07:16:00.3410277Z ##[endgroup]
+2026-03-29T07:16:00.3515336Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2026-03-29T07:16:00.3516413Z                                  Dload  Upload   Total   Spent    Left  Speed
+2026-03-29T07:16:00.3516917Z 
+2026-03-29T07:16:00.4332600Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-03-29T07:16:00.4333417Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-03-29T07:16:00.4941115Z 
+2026-03-29T07:16:00.4941946Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2026-03-29T07:16:00.5488248Z 
+2026-03-29T07:16:00.5489171Z 100  130k  100  130k    0     0   663k      0 --:--:-- --:--:-- --:--:--  663k
+2026-03-29T07:16:00.7502140Z 
+2026-03-29T07:16:00.7503601Z 7-Zip 23.01 (x64) : Copyright (c) 1999-2023 Igor Pavlov : 2023-06-20
+2026-03-29T07:16:00.7504906Z  64-bit locale=C.UTF-8 Threads:4 OPEN_MAX:65536
+2026-03-29T07:16:00.7505588Z 
+2026-03-29T07:16:00.7505917Z Scanning the drive for archives:
+2026-03-29T07:16:00.7506686Z 1 file, 134040 bytes (131 KiB)
+2026-03-29T07:16:00.7507071Z 
+2026-03-29T07:16:00.7507387Z Extracting archive: ninja.zip
+2026-03-29T07:16:00.7531714Z --
+2026-03-29T07:16:00.7532425Z Path = ninja.zip
+2026-03-29T07:16:00.7532834Z Type = zip
+2026-03-29T07:16:00.7533220Z Physical Size = 134040
+2026-03-29T07:16:00.7533481Z 
+2026-03-29T07:16:00.7535033Z Everything is Ok
+2026-03-29T07:16:00.7535346Z 
+2026-03-29T07:16:00.7535575Z Size:       290928
+2026-03-29T07:16:00.7536002Z Compressed: 134040
+2026-03-29T07:16:00.7639063Z ##[group]Run geode-sdk/cli/.github/actions/setup@main
+2026-03-29T07:16:00.7639444Z with:
+2026-03-29T07:16:00.7639663Z   version: latest
+2026-03-29T07:16:00.7639885Z ##[endgroup]
+2026-03-29T07:16:00.7660452Z ##[group]Run if [ "$RUNNER_OS" = "Linux" ]; then
+2026-03-29T07:16:00.7660843Z [36;1mif [ "$RUNNER_OS" = "Linux" ]; then[0m
+2026-03-29T07:16:00.7661179Z [36;1m  echo "host=linux" >> $GITHUB_OUTPUT[0m
+2026-03-29T07:16:00.7661514Z [36;1melif [ "$RUNNER_OS" = "Windows" ]; then[0m
+2026-03-29T07:16:00.7661846Z [36;1m  echo "host=win" >> $GITHUB_OUTPUT[0m
+2026-03-29T07:16:00.7662348Z [36;1melif [ "$RUNNER_OS" = "macOS" ]; then[0m
+2026-03-29T07:16:00.7662691Z [36;1m  echo "host=mac" >> $GITHUB_OUTPUT[0m
+2026-03-29T07:16:00.7663002Z [36;1mfi[0m
+2026-03-29T07:16:00.7691986Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-03-29T07:16:00.7692608Z ##[endgroup]
+2026-03-29T07:16:00.7811649Z ##[group]Run robinraju/release-downloader@v1.10
+2026-03-29T07:16:00.7811994Z with:
+2026-03-29T07:16:00.7812442Z   repository: geode-sdk/cli
+2026-03-29T07:16:00.7812720Z   latest: true
+2026-03-29T07:16:00.7812992Z   fileName: *-linux.zip
+2026-03-29T07:16:00.7813240Z   tarBall: false
+2026-03-29T07:16:00.7813464Z   zipBall: false
+2026-03-29T07:16:00.7813724Z   out-file-path: my-epic-geode-cli
+2026-03-29T07:16:00.7814013Z   preRelease: false
+2026-03-29T07:16:00.7814243Z   extract: false
+2026-03-29T07:16:00.7814575Z   token: ***
+2026-03-29T07:16:00.7814830Z   github-api-url: https://api.github.com
+2026-03-29T07:16:00.7815146Z ##[endgroup]
+2026-03-29T07:16:00.8740981Z Fetching latest release for repo geode-sdk/cli
+2026-03-29T07:16:01.0333912Z Found latest release version: v3.7.4
+2026-03-29T07:16:01.0343285Z Downloading file: geode-cli-v3.7.4-linux.zip to: /home/runner/work/python-runtime-mod/python-runtime-mod/my-epic-geode-cli
+2026-03-29T07:16:01.3021892Z Done: /home/runner/work/python-runtime-mod/python-runtime-mod/my-epic-geode-cli/geode-cli-v3.7.4-linux.zip
+2026-03-29T07:16:01.3119514Z ##[group]Run 7z x "my-epic-geode-cli/*-linux.zip" -omy-epic-geode-cli
+2026-03-29T07:16:01.3120020Z [36;1m7z x "my-epic-geode-cli/*-linux.zip" -omy-epic-geode-cli[0m
+2026-03-29T07:16:01.3120385Z [36;1mchmod +x my-epic-geode-cli/geode[0m
+2026-03-29T07:16:01.3120903Z [36;1mecho "$GITHUB_WORKSPACE/my-epic-geode-cli" >> $GITHUB_PATH[0m
+2026-03-29T07:16:01.3149044Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-03-29T07:16:01.3149396Z ##[endgroup]
+2026-03-29T07:16:01.3230638Z 
+2026-03-29T07:16:01.3231067Z 7-Zip 23.01 (x64) : Copyright (c) 1999-2023 Igor Pavlov : 2023-06-20
+2026-03-29T07:16:01.3231786Z  64-bit locale=C.UTF-8 Threads:4 OPEN_MAX:65536
+2026-03-29T07:16:01.3232384Z 
+2026-03-29T07:16:01.3232564Z Scanning the drive for archives:
+2026-03-29T07:16:01.3233033Z 1 file, 7767899 bytes (7586 KiB)
+2026-03-29T07:16:01.3233320Z 
+2026-03-29T07:16:01.3233638Z Extracting archive: my-epic-geode-cli/geode-cli-v3.7.4-linux.zip
+2026-03-29T07:16:01.4483504Z --
+2026-03-29T07:16:01.4484263Z Path = my-epic-geode-cli/geode-cli-v3.7.4-linux.zip
+2026-03-29T07:16:01.4484998Z Type = zip
+2026-03-29T07:16:01.4485416Z Physical Size = 7767899
+2026-03-29T07:16:01.4485742Z 
+2026-03-29T07:16:01.4485939Z Everything is Ok
+2026-03-29T07:16:01.4486209Z 
+2026-03-29T07:16:01.4486428Z Size:       21053808
+2026-03-29T07:16:01.4486876Z Compressed: 7767899
+2026-03-29T07:16:01.4544817Z ##[group]Run export CLI_PROFILE="/home/runner/work/python-runtime-mod/python-runtime-mod/cli-profile"
+2026-03-29T07:16:01.4545584Z [36;1mexport CLI_PROFILE="/home/runner/work/python-runtime-mod/python-runtime-mod/cli-profile"[0m
+2026-03-29T07:16:01.4546040Z [36;1m# for windows[0m
+2026-03-29T07:16:01.4546291Z [36;1mmkdir -p "$CLI_PROFILE/geode/mods"[0m
+2026-03-29T07:16:01.4546566Z [36;1m# for mac[0m
+2026-03-29T07:16:01.4546836Z [36;1mmkdir -p "$CLI_PROFILE/Contents/geode/mods"[0m
+2026-03-29T07:16:01.4547281Z [36;1mgeode profile add --name GithubActions "$CLI_PROFILE/GeometryDash.exe" win[0m
+2026-03-29T07:16:01.4547677Z [36;1m[0m
+2026-03-29T07:16:01.4548065Z [36;1mgeode sdk install "/home/runner/work/python-runtime-mod/python-runtime-mod/geode-sdk-clone"[0m
+2026-03-29T07:16:01.4548518Z [36;1m[0m
+2026-03-29T07:16:01.4548738Z [36;1m# silly github actions wont refresh the env[0m
+2026-03-29T07:16:01.4549250Z [36;1mexport GEODE_SDK="/home/runner/work/python-runtime-mod/python-runtime-mod/geode-sdk-clone"[0m
+2026-03-29T07:16:01.4549751Z [36;1mecho "GEODE_SDK=$GEODE_SDK" >> $GITHUB_ENV[0m
+2026-03-29T07:16:01.4550022Z [36;1m[0m
+2026-03-29T07:16:01.4550213Z [36;1mif [ "given" == "nightly" ]; then[0m
+2026-03-29T07:16:01.4550485Z [36;1m  geode sdk update nightly[0m
+2026-03-29T07:16:01.4550796Z [36;1m  geode sdk install-binaries --platform android64[0m
+2026-03-29T07:16:01.4551134Z [36;1melif [ "given" == "latest" ]; then[0m
+2026-03-29T07:16:01.4551397Z [36;1m  geode sdk update stable[0m
+2026-03-29T07:16:01.4551693Z [36;1m  geode sdk install-binaries --platform android64[0m
+2026-03-29T07:16:01.4552001Z [36;1melif [ "given" == "given" ]; then[0m
+2026-03-29T07:16:01.4552755Z [36;1m  export MOD_JSON_PATH=$(find . -name "mod.json" -not -path "./geode-sdk-clone/*" -print | sort -r | head -n 1)[0m
+2026-03-29T07:16:01.4553384Z [36;1m  export TARGET_GEODE_VERSION=$(jq -r '.geode' $MOD_JSON_PATH)[0m
+2026-03-29T07:16:01.4553853Z [36;1m  echo "Updating to version $TARGET_GEODE_VERSION from $MOD_JSON_PATH"[0m
+2026-03-29T07:16:01.4554265Z [36;1m  geode sdk update "$TARGET_GEODE_VERSION"[0m
+2026-03-29T07:16:01.4554722Z [36;1m  geode sdk install-binaries --platform android64 --version "$TARGET_GEODE_VERSION"[0m
+2026-03-29T07:16:01.4555142Z [36;1melse[0m
+2026-03-29T07:16:01.4555334Z [36;1m  geode sdk update given[0m
+2026-03-29T07:16:01.4555643Z [36;1m  geode sdk install-binaries --platform android64[0m
+2026-03-29T07:16:01.4556120Z [36;1mfi[0m
+2026-03-29T07:16:01.4556287Z [36;1m[0m
+2026-03-29T07:16:01.4556648Z [36;1mexport CPM_CACHE="/home/runner/work/python-runtime-mod/python-runtime-mod/cpm-cache"[0m
+2026-03-29T07:16:01.4557144Z [36;1mecho "CPM_SOURCE_CACHE=$CPM_CACHE" >> $GITHUB_ENV[0m
+2026-03-29T07:16:01.4585904Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-03-29T07:16:01.4586276Z ##[endgroup]
+2026-03-29T07:16:01.4685170Z | Done | A new profile named 'GithubActions' has been created
+2026-03-29T07:16:01.4713056Z | Info | Downloading SDK
+2026-03-29T07:16:01.5967082Z | Info | Enumerating objects: 58053, done.
+2026-03-29T07:16:01.5967867Z | Info | Counting objects:   0% (1/238)
+2026-03-29T07:16:01.5968367Z | Info | Counting objects:   1% (3/238)
+2026-03-29T07:16:01.5968864Z | Info | Counting objects:   2% (5/238)
+2026-03-29T07:16:01.5969305Z | Info | Counting objects:   3% (8/238)
+2026-03-29T07:16:01.5969764Z | Info | Counting objects:   4% (10/238)
+2026-03-29T07:16:01.5970277Z Counting objects:   5% (12/238)
+2026-03-29T07:16:01.5970741Z | Info | Counting objects:   6% (15/238)
+2026-03-29T07:16:01.5971222Z Counting objects:   7% (17/238)
+2026-03-29T07:16:01.5971655Z | Info | Counting objects:   8% (20/238)
+2026-03-29T07:16:01.5972440Z Counting objects:   9% (22/238)
+2026-03-29T07:16:01.5972878Z | Info | Counting objects:  10% (24/238)
+2026-03-29T07:16:01.5973220Z | Info | Counting objects:  11% (27/238)
+2026-03-29T07:16:01.5973553Z Counting objects:  12% (29/238)
+2026-03-29T07:16:01.5973875Z | Info | Counting objects:  13% (31/238)
+2026-03-29T07:16:01.5974201Z | Info | Counting objects:  14% (34/238)
+2026-03-29T07:16:01.5974522Z Counting objects:  15% (36/238)
+2026-03-29T07:16:01.5974843Z | Info | Counting objects:  16% (39/238)
+2026-03-29T07:16:01.5975169Z | Info | Counting objects:  17% (41/238)
+2026-03-29T07:16:01.5975489Z Counting objects:  18% (43/238)
+2026-03-29T07:16:01.5975787Z | Info | Counting objects:  19% (46/238)
+2026-03-29T07:16:01.5976126Z | Info | Counting objects:  20% (48/238)
+2026-03-29T07:16:01.5976450Z Counting objects:  21% (50/238)
+2026-03-29T07:16:01.5976761Z | Info | Counting objects:  22% (53/238)
+2026-03-29T07:16:01.5977090Z Counting objects:  23% (55/238)
+2026-03-29T07:16:01.5977387Z | Info | Counting objects:  24% (58/238)
+2026-03-29T07:16:01.5977707Z Counting objects:  25% (60/238)
+2026-03-29T07:16:01.5977999Z | Info | Counting objects:  26% (62/238)
+2026-03-29T07:16:01.5978311Z Counting objects:  27% (65/238)
+2026-03-29T07:16:01.5978615Z | Info | Counting objects:  28% (67/238)
+2026-03-29T07:16:01.5978933Z Counting objects:  29% (70/238)
+2026-03-29T07:16:01.5979218Z | Info | Counting objects:  30% (72/238)
+2026-03-29T07:16:01.5979543Z Counting objects:  31% (74/238)
+2026-03-29T07:16:01.5979840Z | Info | Counting objects:  32% (77/238)
+2026-03-29T07:16:01.5980161Z Counting objects:  33% (79/238)
+2026-03-29T07:16:01.5980459Z | Info | Counting objects:  34% (81/238)
+2026-03-29T07:16:01.5980740Z Counting objects:  35% (84/238)
+2026-03-29T07:16:01.5981029Z | Info | Counting objects:  36% (86/238)
+2026-03-29T07:16:01.5981314Z Counting objects:  37% (89/238)
+2026-03-29T07:16:01.5981588Z | Info | Counting objects:  38% (91/238)
+2026-03-29T07:16:01.5981866Z Counting objects:  39% (93/238)
+2026-03-29T07:16:01.5982130Z Counting objects:  40% (96/238)
+2026-03-29T07:16:01.5982694Z | Info | Counting objects:  41% (98/238)
+2026-03-29T07:16:01.5982996Z Counting objects:  42% (100/238)
+2026-03-29T07:16:01.5983263Z | Info | Counting objects:  43% (103/238)
+2026-03-29T07:16:01.5983577Z | Info | Counting objects:  44% (105/238)
+2026-03-29T07:16:01.5983865Z Counting objects:  45% (108/238)
+2026-03-29T07:16:01.5984127Z | Info | Counting objects:  46% (110/238)
+2026-03-29T07:16:01.5984412Z Counting objects:  47% (112/238)
+2026-03-29T07:16:01.5984687Z | Info | Counting objects:  48% (115/238)
+2026-03-29T07:16:01.5984961Z Counting objects:  49% (117/238)
+2026-03-29T07:16:01.5985230Z | Info | Counting objects:  50% (119/238)
+2026-03-29T07:16:01.5985512Z | Info | Counting objects:  51% (122/238)
+2026-03-29T07:16:01.5986043Z Counting objects:  52% (124/238)
+2026-03-29T07:16:01.6015946Z | Info | Counting objects:  53% (127/238)
+2026-03-29T07:16:01.6016433Z Counting objects:  54% (129/238)
+2026-03-29T07:16:01.6016856Z | Info | Counting objects:  55% (131/238)
+2026-03-29T07:16:01.6017202Z Counting objects:  56% (134/238)
+2026-03-29T07:16:01.6017490Z | Info | Counting objects:  57% (136/238)
+2026-03-29T07:16:01.6017791Z Counting objects:  58% (139/238)
+2026-03-29T07:16:01.6018311Z | Info | Counting objects:  59% (141/238)
+2026-03-29T07:16:01.6018613Z | Info | Counting objects:  60% (143/238)
+2026-03-29T07:16:01.6018892Z Counting objects:  61% (146/238)
+2026-03-29T07:16:01.6019161Z | Info | Counting objects:  62% (148/238)
+2026-03-29T07:16:01.6019437Z Counting objects:  63% (150/238)
+2026-03-29T07:16:01.6019706Z | Info | Counting objects:  64% (153/238)
+2026-03-29T07:16:01.6019989Z Counting objects:  65% (155/238)
+2026-03-29T07:16:01.6020276Z | Info | Counting objects:  66% (158/238)
+2026-03-29T07:16:01.6020571Z Counting objects:  67% (160/238)
+2026-03-29T07:16:01.6020831Z | Info | Counting objects:  68% (162/238)
+2026-03-29T07:16:01.6021338Z Counting objects:  69% (165/238)
+2026-03-29T07:16:01.6021708Z | Info | Counting objects:  70% (167/238)
+2026-03-29T07:16:01.6022054Z Counting objects:  71% (169/238)
+2026-03-29T07:16:01.6022850Z | Info | Counting objects:  72% (172/238)
+2026-03-29T07:16:01.6023306Z | Info | Counting objects:  73% (174/238)
+2026-03-29T07:16:01.6023650Z Counting objects:  74% (177/238)
+2026-03-29T07:16:01.6024078Z | Info | Counting objects:  75% (179/238)
+2026-03-29T07:16:01.6024466Z | Info | Counting objects:  76% (181/238)
+2026-03-29T07:16:01.6024817Z Counting objects:  77% (184/238)
+2026-03-29T07:16:01.6025249Z | Info | Counting objects:  78% (186/238)
+2026-03-29T07:16:01.6025656Z Counting objects:  79% (189/238)
+2026-03-29T07:16:01.6025999Z Counting objects:  80% (191/238)
+2026-03-29T07:16:01.6026392Z | Info | Counting objects:  81% (193/238)
+2026-03-29T07:16:01.6026784Z Counting objects:  82% (196/238)
+2026-03-29T07:16:01.6027131Z | Info | Counting objects:  83% (198/238)
+2026-03-29T07:16:01.6027689Z Counting objects:  84% (200/238)
+2026-03-29T07:16:01.6028117Z | Info | Counting objects:  85% (203/238)
+2026-03-29T07:16:01.6028442Z Counting objects:  86% (205/238)
+2026-03-29T07:16:01.6028863Z | Info | Counting objects:  87% (208/238)
+2026-03-29T07:16:01.6029236Z Counting objects:  88% (210/238)
+2026-03-29T07:16:01.6029630Z | Info | Counting objects:  89% (212/238)
+2026-03-29T07:16:01.6029993Z Counting objects:  90% (215/238)
+2026-03-29T07:16:01.6046414Z | Info | Counting objects:  91% (217/238)
+2026-03-29T07:16:01.6046830Z Counting objects:  92% (219/238)
+2026-03-29T07:16:01.6047133Z | Info | Counting objects:  93% (222/238)
+2026-03-29T07:16:01.6047436Z Counting objects:  94% (224/238)
+2026-03-29T07:16:01.6047716Z | Info | Counting objects:  95% (227/238)
+2026-03-29T07:16:01.6048054Z Counting objects:  96% (229/238)
+2026-03-29T07:16:01.6048362Z | Info | Counting objects:  97% (231/238)
+2026-03-29T07:16:01.6048689Z Counting objects:  98% (234/238)
+2026-03-29T07:16:01.6048998Z | Info | Counting objects:  99% (236/238)
+2026-03-29T07:16:01.6049290Z Counting objects: 100% (238/238)
+2026-03-29T07:16:01.6049595Z | Info | Counting objects: 100% (238/238), done.
+2026-03-29T07:16:01.6164914Z | Info | Compressing objects:   0% (1/116)
+2026-03-29T07:16:01.6165441Z Compressing objects:   1% (2/116)
+2026-03-29T07:16:01.6165900Z | Info | Compressing objects:   2% (3/116)
+2026-03-29T07:16:01.6166255Z | Info | Compressing objects:   3% (4/116)
+2026-03-29T07:16:01.6166591Z | Info | Compressing objects:   4% (5/116)
+2026-03-29T07:16:01.6166925Z | Info | Compressing objects:   5% (6/116)
+2026-03-29T07:16:01.6167258Z | Info | Compressing objects:   6% (7/116)
+2026-03-29T07:16:01.6167593Z | Info | Compressing objects:   7% (9/116)
+2026-03-29T07:16:01.6167930Z | Info | Compressing objects:   8% (10/116)
+2026-03-29T07:16:01.6168322Z | Info | Compressing objects:   9% (11/116)
+2026-03-29T07:16:01.6169140Z | Info | Compressing objects:  10% (12/116)
+2026-03-29T07:16:01.6169647Z | Info | Compressing objects:  11% (13/116)
+2026-03-29T07:16:01.6170100Z | Info | Compressing objects:  12% (14/116)
+2026-03-29T07:16:01.6170451Z | Info | Compressing objects:  13% (16/116)
+2026-03-29T07:16:01.6170795Z | Info | Compressing objects:  14% (17/116)
+2026-03-29T07:16:01.6171141Z | Info | Compressing objects:  15% (18/116)
+2026-03-29T07:16:01.6171480Z | Info | Compressing objects:  16% (19/116)
+2026-03-29T07:16:01.6171971Z | Info | Compressing objects:  17% (20/116)
+2026-03-29T07:16:01.6172530Z | Info | Compressing objects:  18% (21/116)
+2026-03-29T07:16:01.6172865Z | Info | Compressing objects:  19% (23/116)
+2026-03-29T07:16:01.6173209Z | Info | Compressing objects:  20% (24/116)
+2026-03-29T07:16:01.6173549Z | Info | Compressing objects:  21% (25/116)
+2026-03-29T07:16:01.6173880Z | Info | Compressing objects:  22% (26/116)
+2026-03-29T07:16:01.6174257Z | Info | Compressing objects:  23% (27/116)
+2026-03-29T07:16:01.6174609Z | Info | Compressing objects:  24% (28/116)
+2026-03-29T07:16:01.6174972Z | Info | Compressing objects:  25% (29/116)
+2026-03-29T07:16:01.6175314Z | Info | Compressing objects:  26% (31/116)
+2026-03-29T07:16:01.6175665Z Compressing objects:  27% (32/116)
+2026-03-29T07:16:01.6175995Z | Info | Compressing objects:  28% (33/116)
+2026-03-29T07:16:01.6176335Z | Info | Compressing objects:  29% (34/116)
+2026-03-29T07:16:01.6176702Z | Info | Compressing objects:  30% (35/116)
+2026-03-29T07:16:01.6177060Z | Info | Compressing objects:  31% (36/116)
+2026-03-29T07:16:01.6177406Z | Info | Compressing objects:  32% (38/116)
+2026-03-29T07:16:01.6177744Z | Info | Compressing objects:  33% (39/116)
+2026-03-29T07:16:01.6178089Z | Info | Compressing objects:  34% (40/116)
+2026-03-29T07:16:01.6178437Z | Info | Compressing objects:  35% (41/116)
+2026-03-29T07:16:01.6178782Z | Info | Compressing objects:  36% (42/116)
+2026-03-29T07:16:01.6179132Z | Info | Compressing objects:  37% (43/116)
+2026-03-29T07:16:01.6179494Z | Info | Compressing objects:  38% (45/116)
+2026-03-29T07:16:01.6179846Z | Info | Compressing objects:  39% (46/116)
+2026-03-29T07:16:01.6180218Z | Info | Compressing objects:  40% (47/116)
+2026-03-29T07:16:01.6180525Z | Info | Compressing objects:  41% (48/116)
+2026-03-29T07:16:01.6180838Z | Info | Compressing objects:  42% (49/116)
+2026-03-29T07:16:01.6181158Z | Info | Compressing objects:  43% (50/116)
+2026-03-29T07:16:01.6181458Z | Info | Compressing objects:  44% (52/116)
+2026-03-29T07:16:01.6181920Z | Info | Compressing objects:  45% (53/116)
+2026-03-29T07:16:01.6182616Z | Info | Compressing objects:  46% (54/116)
+2026-03-29T07:16:01.6183129Z | Info | Compressing objects:  47% (55/116)
+2026-03-29T07:16:01.6183605Z | Info | Compressing objects:  48% (56/116)
+2026-03-29T07:16:01.6184073Z | Info | Compressing objects:  49% (57/116)
+2026-03-29T07:16:01.6184540Z | Info | Compressing objects:  50% (58/116)
+2026-03-29T07:16:01.6185011Z | Info | Compressing objects:  51% (60/116)
+2026-03-29T07:16:01.6185493Z | Info | Compressing objects:  52% (61/116)
+2026-03-29T07:16:01.6185821Z | Info | Compressing objects:  53% (62/116)
+2026-03-29T07:16:01.6186125Z | Info | Compressing objects:  54% (63/116)
+2026-03-29T07:16:01.6186442Z | Info | Compressing objects:  55% (64/116)
+2026-03-29T07:16:01.6186735Z | Info | Compressing objects:  56% (65/116)
+2026-03-29T07:16:01.6187044Z | Info | Compressing objects:  57% (67/116)
+2026-03-29T07:16:01.6187346Z | Info | Compressing objects:  58% (68/116)
+2026-03-29T07:16:01.6187652Z | Info | Compressing objects:  59% (69/116)
+2026-03-29T07:16:01.6187961Z Compressing objects:  60% (70/116)
+2026-03-29T07:16:01.6188284Z | Info | Compressing objects:  61% (71/116)
+2026-03-29T07:16:01.6188577Z | Info | Compressing objects:  62% (72/116)
+2026-03-29T07:16:01.6188875Z | Info | Compressing objects:  63% (74/116)
+2026-03-29T07:16:01.6189170Z Compressing objects:  64% (75/116)
+2026-03-29T07:16:01.6189448Z | Info | Compressing objects:  65% (76/116)
+2026-03-29T07:16:01.6189755Z | Info | Compressing objects:  66% (77/116)
+2026-03-29T07:16:01.6190240Z | Info | Compressing objects:  67% (78/116)
+2026-03-29T07:16:01.6190567Z | Info | Compressing objects:  68% (79/116)
+2026-03-29T07:16:01.6190921Z | Info | Compressing objects:  69% (81/116)
+2026-03-29T07:16:01.6191264Z | Info | Compressing objects:  70% (82/116)
+2026-03-29T07:16:01.6191580Z | Info | Compressing objects:  71% (83/116)
+2026-03-29T07:16:01.6191887Z | Info | Compressing objects:  72% (84/116)
+2026-03-29T07:16:01.6192516Z | Info | Compressing objects:  73% (85/116)
+2026-03-29T07:16:01.6193016Z | Info | Compressing objects:  74% (86/116)
+2026-03-29T07:16:01.6193333Z | Info | Compressing objects:  75% (87/116)
+2026-03-29T07:16:01.6193637Z | Info | Compressing objects:  76% (89/116)
+2026-03-29T07:16:01.6193935Z | Info | Compressing objects:  77% (90/116)
+2026-03-29T07:16:01.6194240Z | Info | Compressing objects:  78% (91/116)
+2026-03-29T07:16:01.6194561Z | Info | Compressing objects:  79% (92/116)
+2026-03-29T07:16:01.6194872Z | Info | Compressing objects:  80% (93/116)
+2026-03-29T07:16:01.6195185Z | Info | Compressing objects:  81% (94/116)
+2026-03-29T07:16:01.6195477Z | Info | Compressing objects:  82% (96/116)
+2026-03-29T07:16:01.6195784Z | Info | Compressing objects:  83% (97/116)
+2026-03-29T07:16:01.6196095Z | Info | Compressing objects:  84% (98/116)
+2026-03-29T07:16:01.6196397Z | Info | Compressing objects:  85% (99/116)
+2026-03-29T07:16:01.6196692Z | Info | Compressing objects:  86% (100/116)
+2026-03-29T07:16:01.6197002Z | Info | Compressing objects:  87% (101/116)
+2026-03-29T07:16:01.6197324Z | Info | Compressing objects:  88% (103/116)
+2026-03-29T07:16:01.6197615Z | Info | Compressing objects:  89% (104/116)
+2026-03-29T07:16:01.6197918Z | Info | Compressing objects:  90% (105/116)
+2026-03-29T07:16:01.6198221Z | Info | Compressing objects:  91% (106/116)
+2026-03-29T07:16:01.6198511Z | Info | Compressing objects:  92% (107/116)
+2026-03-29T07:16:01.6198837Z | Info | Compressing objects:  93% (108/116)
+2026-03-29T07:16:01.6199134Z | Info | Compressing objects:  94% (110/116)
+2026-03-29T07:16:01.6199424Z | Info | Compressing objects:  95% (111/116)
+2026-03-29T07:16:01.6199725Z | Info | Compressing objects:  96% (112/116)
+2026-03-29T07:16:01.6200034Z | Info | Compressing objects:  97% (113/116)
+2026-03-29T07:16:01.6200334Z | Info | Compressing objects:  98% (114/116)
+2026-03-29T07:16:01.6200629Z | Info | Compressing objects:  99% (115/116)
+2026-03-29T07:16:01.6200925Z | Info | Compressing objects: 100% (116/116)
+2026-03-29T07:16:01.6201267Z | Info | Compressing objects: 100% (116/116), done.
+2026-03-29T07:16:09.2823507Z | Info | Total 58053 (delta 166), reused 139 (delta 122), pack-reused 57815 (from 2)
+2026-03-29T07:16:12.4277120Z | Info | Set GEODE_SDK environment variable automatically
+2026-03-29T07:16:12.4865280Z | Info | Updating head
+2026-03-29T07:16:12.5177824Z | Done | Updated head to v5.4.1
+2026-03-29T07:16:12.5178434Z | Done | Successfully installed SDK
+2026-03-29T07:16:12.5179086Z | Info | Please restart your command line to have the GEODE_SDK enviroment variable set.
+2026-03-29T07:16:12.5179807Z | Info | Use `geode sdk install-binaries` to install pre-built binaries
+2026-03-29T07:16:12.5333781Z Updating to version 5.4.1 from ./mod.json
+2026-03-29T07:16:12.5359175Z | Info | Switching to 5.4.1
+2026-03-29T07:16:12.5359833Z | Info | Updating SDK
+2026-03-29T07:16:12.6126786Z | Info | Updating head
+2026-03-29T07:16:12.6566050Z | Info | Switched to 5.4.1
+2026-03-29T07:16:12.6566613Z | Done | Successfully updated SDK.
+2026-03-29T07:16:12.6610407Z | Info | Installing binaries for 5.4.1
+2026-03-29T07:16:12.7988867Z | Info | Found binaries for platform "android64"
+2026-03-29T07:16:12.7991315Z | Info | Downloading
+2026-03-29T07:16:13.1393522Z | Done | Binaries installed
+2026-03-29T07:16:13.1450645Z ##[group]Run mkdir -p $HOME/.cache
+2026-03-29T07:16:13.1451021Z [36;1mmkdir -p $HOME/.cache[0m
+2026-03-29T07:16:13.1451239Z [36;1m[0m
+2026-03-29T07:16:13.1451458Z [36;1mNDK_PATH="/usr/local/lib/android/sdk/ndk/"[0m
+2026-03-29T07:16:13.1451742Z [36;1mif [ "" = "" ]; then[0m
+2026-03-29T07:16:13.1452509Z [36;1m  NDK_PATH="$ANDROID_NDK_LATEST_HOME"[0m
+2026-03-29T07:16:13.1452782Z [36;1mfi[0m
+2026-03-29T07:16:13.1452947Z [36;1m[0m
+2026-03-29T07:16:13.1453104Z [36;1mcd "./"[0m
+2026-03-29T07:16:13.1453285Z [36;1mCMAKE_EXTRA_ARGS=""[0m
+2026-03-29T07:16:13.1453514Z [36;1mif [ android64 = "mac" ]; then[0m
+2026-03-29T07:16:13.1454164Z [36;1m  CMAKE_EXTRA_ARGS="-DCMAKE_OSX_DEPLOYMENT_TARGET=11.0 -DGEODE_DISABLE_PRECOMPILED_HEADERS=OFF -DCMAKE_AR='/usr/bin/ar' -DCMAKE_RANLIB='/usr/bin/ranlib'"[0m
+2026-03-29T07:16:13.1455002Z [36;1melif [ android64 = "android32" ]; then[0m
+2026-03-29T07:16:13.1455742Z [36;1m  CMAKE_EXTRA_ARGS="-DCMAKE_TOOLCHAIN_FILE=$NDK_PATH/build/cmake/android.toolchain.cmake -DANDROID_STL=c++_shared -DANDROID_ABI=armeabi-v7a -DANDROID_PLATFORM=android-23"[0m
+2026-03-29T07:16:13.1456471Z [36;1melif [ android64 = "android64" ]; then[0m
+2026-03-29T07:16:13.1457185Z [36;1m  CMAKE_EXTRA_ARGS="-DCMAKE_TOOLCHAIN_FILE=$NDK_PATH/build/cmake/android.toolchain.cmake -DANDROID_STL=c++_shared -DANDROID_ABI=arm64-v8a -DANDROID_PLATFORM=android-23"[0m
+2026-03-29T07:16:13.1457905Z [36;1melif [ android64 = "ios" ]; then[0m
+2026-03-29T07:16:13.1458404Z [36;1m  CMAKE_EXTRA_ARGS="-DCMAKE_SYSTEM_NAME=iOS -DGEODE_TARGET_PLATFORM=iOS -DGEODE_DISABLE_PRECOMPILED_HEADERS=OFF"[0m
+2026-03-29T07:16:13.1458902Z [36;1mfi[0m
+2026-03-29T07:16:13.1459080Z [36;1mif [ "true" = "true" ]; then[0m
+2026-03-29T07:16:13.1459449Z [36;1m  CMAKE_EXTRA_ARGS="$CMAKE_EXTRA_ARGS -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON"[0m
+2026-03-29T07:16:13.1459833Z [36;1mfi[0m
+2026-03-29T07:16:13.1460047Z [36;1mif [ "false" = "true" ] && [ linux = "win" ]; then[0m
+2026-03-29T07:16:13.1460426Z [36;1m  CMAKE_EXTRA_ARGS="$CMAKE_EXTRA_ARGS -DGEODE_BUNDLE_PDB=ON"[0m
+2026-03-29T07:16:13.1460739Z [36;1mfi[0m
+2026-03-29T07:16:13.1460917Z [36;1mif [ -n "sccache" ]; then[0m
+2026-03-29T07:16:13.1461162Z [36;1m  CCACHE_PATH="$(which "sccache")"[0m
+2026-03-29T07:16:13.1461710Z [36;1m  CMAKE_EXTRA_ARGS="$CMAKE_EXTRA_ARGS -DCMAKE_C_COMPILER_LAUNCHER=${CCACHE_PATH} -DCMAKE_CXX_COMPILER_LAUNCHER=${CCACHE_PATH}"[0m
+2026-03-29T07:16:13.1462486Z [36;1mfi[0m
+2026-03-29T07:16:13.1463461Z [36;1mcmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DGEODE_CODEGEN_CMAKE_ARGS="-DCMAKE_C_COMPILER=clang;-DCMAKE_CXX_COMPILER=clang++;-G Ninja" -G Ninja $CMAKE_EXTRA_ARGS -DGEODE_DONT_INSTALL_MODS=ON -DGEODE_TARGET_PLATFORM=Android64 [0m
+2026-03-29T07:16:13.1464587Z [36;1mcmake --build build --config Release  --parallel[0m
+2026-03-29T07:16:13.1464877Z [36;1m[0m
+2026-03-29T07:16:13.1465168Z [36;1mmkdir "/home/runner/work/python-runtime-mod/python-runtime-mod/output"[0m
+2026-03-29T07:16:13.1465543Z [36;1m[0m
+2026-03-29T07:16:13.1465751Z [36;1mfor file in $(find ./build -name *.geode); do[0m
+2026-03-29T07:16:13.1466153Z [36;1m  cp $file "/home/runner/work/python-runtime-mod/python-runtime-mod/output"[0m
+2026-03-29T07:16:13.1466619Z [36;1m  if [ linux = "linux" ] && [ "false" = "true" ]; then[0m
+2026-03-29T07:16:13.1467008Z [36;1m    if [ android64 = "android32" ] || [ android64 = "android64" ]; then[0m
+2026-03-29T07:16:13.1467409Z [36;1m      SO_FILE_NAME="$(basename $file .geode).android64.so"[0m
+2026-03-29T07:16:13.1467742Z [36;1m      if [ -f "./build/$SO_FILE_NAME" ]; then[0m
+2026-03-29T07:16:13.1468302Z [36;1m        dump_syms ./build/$SO_FILE_NAME -o "/home/runner/work/python-runtime-mod/python-runtime-mod/output/$SO_FILE_NAME.sym"[0m
+2026-03-29T07:16:13.1468824Z [36;1m      fi[0m
+2026-03-29T07:16:13.1468989Z [36;1m    fi[0m
+2026-03-29T07:16:13.1469154Z [36;1m  fi[0m
+2026-03-29T07:16:13.1469317Z [36;1mdone[0m
+2026-03-29T07:16:13.1469473Z [36;1m[0m
+2026-03-29T07:16:13.1469632Z [36;1mif [ linux = "win" ]; then[0m
+2026-03-29T07:16:13.1469872Z [36;1m  if [ "false" = "true" ]; then[0m
+2026-03-29T07:16:13.1470158Z [36;1m    for file in $(find ./build -name *.pdb); do[0m
+2026-03-29T07:16:13.1470566Z [36;1m      cp $file "/home/runner/work/python-runtime-mod/python-runtime-mod/output"[0m
+2026-03-29T07:16:13.1471073Z [36;1m    done[0m
+2026-03-29T07:16:13.1471237Z [36;1m  fi[0m
+2026-03-29T07:16:13.1471389Z [36;1mfi[0m
+2026-03-29T07:16:13.1471546Z [36;1m[0m
+2026-03-29T07:16:13.1471710Z [36;1mif [ "false" = "true" ]; then[0m
+2026-03-29T07:16:13.1471984Z [36;1m  for file in $(find ./build -name *.pdb); do[0m
+2026-03-29T07:16:13.1472592Z [36;1m    cp $file "/home/runner/work/python-runtime-mod/python-runtime-mod/output"[0m
+2026-03-29T07:16:13.1473149Z [36;1m  done[0m
+2026-03-29T07:16:13.1473360Z [36;1m  for file in $(find ./build -name *.dbg); do[0m
+2026-03-29T07:16:13.1473742Z [36;1m    cp $file "/home/runner/work/python-runtime-mod/python-runtime-mod/output"[0m
+2026-03-29T07:16:13.1474109Z [36;1m  done[0m
+2026-03-29T07:16:13.1474318Z [36;1m  for dir in $(find ./build -name *.dSYM); do[0m
+2026-03-29T07:16:13.1474712Z [36;1m    cp -R $dir "/home/runner/work/python-runtime-mod/python-runtime-mod/output"[0m
+2026-03-29T07:16:13.1475084Z [36;1m  done[0m
+2026-03-29T07:16:13.1475246Z [36;1mfi[0m
+2026-03-29T07:16:13.1475407Z [36;1m[0m
+2026-03-29T07:16:13.1475698Z [36;1mOUTPUT_DIR="/home/runner/work/python-runtime-mod/python-runtime-mod/output"[0m
+2026-03-29T07:16:13.1476088Z [36;1mif [ linux = "mac" ]; then[0m
+2026-03-29T07:16:13.1476505Z [36;1m  OUTPUT_DIR=$(python3 -c 'import os, sys; print(os.path.realpath(sys.argv[1]))' "$OUTPUT_DIR")[0m
+2026-03-29T07:16:13.1476937Z [36;1melif [ linux = "win" ]; then[0m
+2026-03-29T07:16:13.1477215Z [36;1m  OUTPUT_DIR=$(cygpath -wa "$OUTPUT_DIR")[0m
+2026-03-29T07:16:13.1477498Z [36;1melse[0m
+2026-03-29T07:16:13.1477696Z [36;1m  OUTPUT_DIR=$(realpath "$OUTPUT_DIR")[0m
+2026-03-29T07:16:13.1477940Z [36;1mfi[0m
+2026-03-29T07:16:13.1478148Z [36;1mecho "output=$OUTPUT_DIR" >> $GITHUB_OUTPUT[0m
+2026-03-29T07:16:13.1506898Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-03-29T07:16:13.1507223Z env:
+2026-03-29T07:16:13.1507562Z   GEODE_SDK: /home/runner/work/python-runtime-mod/python-runtime-mod/geode-sdk-clone
+2026-03-29T07:16:13.1508139Z   CPM_SOURCE_CACHE: /home/runner/work/python-runtime-mod/python-runtime-mod/cpm-cache
+2026-03-29T07:16:13.1508534Z ##[endgroup]
+2026-03-29T07:16:13.9603082Z -- Found Python3: /usr/bin/python3.12 (found version "3.12.3") found components: Interpreter Development.Embed
+2026-03-29T07:16:13.9605826Z CMake Warning (dev) at /usr/local/share/cmake-3.31/Modules/FindPython/Support.cmake:4064 (add_library):
+2026-03-29T07:16:13.9606678Z   ADD_LIBRARY called with SHARED option but the target platform does not
+2026-03-29T07:16:13.9607320Z   support dynamic linking.  Building a STATIC library instead.  This may lead
+2026-03-29T07:16:13.9607814Z   to problems.
+2026-03-29T07:16:13.9608064Z Call Stack (most recent call first):
+2026-03-29T07:16:13.9608631Z   /usr/local/share/cmake-3.31/Modules/FindPython/Support.cmake:4153 (__python_import_library)
+2026-03-29T07:16:13.9609325Z   /usr/local/share/cmake-3.31/Modules/FindPython3.cmake:602 (include)
+2026-03-29T07:16:13.9609802Z   CMakeLists.txt:61 (find_package)
+2026-03-29T07:16:13.9610263Z This warning is for project developers.  Use -Wno-dev to suppress it.
+2026-03-29T07:16:13.9610627Z 
+2026-03-29T07:16:16.7270958Z -- The C compiler identification is Clang 21.0.0
+2026-03-29T07:16:16.9944977Z -- The CXX compiler identification is Clang 21.0.0
+2026-03-29T07:16:17.2089252Z -- Detecting C compiler ABI info
+2026-03-29T07:16:18.9397052Z -- Detecting C compiler ABI info - done
+2026-03-29T07:16:18.9566368Z -- Check for working C compiler: /usr/local/lib/android/sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/bin/clang - skipped
+2026-03-29T07:16:18.9776716Z -- Detecting C compile features
+2026-03-29T07:16:18.9834539Z -- Detecting C compile features - done
+2026-03-29T07:16:19.0483562Z -- Detecting CXX compiler ABI info
+2026-03-29T07:16:19.2218456Z -- Detecting CXX compiler ABI info - done
+2026-03-29T07:16:19.2375058Z -- Check for working CXX compiler: /usr/local/lib/android/sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ - skipped
+2026-03-29T07:16:19.2378951Z -- Detecting CXX compile features
+2026-03-29T07:16:19.2394269Z -- Detecting CXX compile features - done
+2026-03-29T07:16:19.2631755Z -- Version: 5.4.1
+2026-03-29T07:16:19.5025806Z -- No override path for bindings provided, using CPM to clone default. If you would like to use a separate clone of the bindings repo (for example in order to be able to efficiently change and contribute new bindings) then set GEODE_BINDINGS_REPO_PATH to where you have cloned the repository (system environment variables are supported).
+2026-03-29T07:16:19.5029818Z -- CPM: Adding package bindings@ (main)
+2026-03-29T07:16:19.5037586Z -- Populating bindings
+2026-03-29T07:16:19.5641516Z -- Configuring done (0.0s)
+2026-03-29T07:16:19.5706854Z -- Generating done (0.0s)
+2026-03-29T07:16:19.5709737Z -- Build files have been written to: /home/runner/work/python-runtime-mod/python-runtime-mod/build/_deps/bindings-subbuild
+2026-03-29T07:16:19.5799667Z [1/9] Creating directories for 'bindings-populate'
+2026-03-29T07:16:19.5800180Z [1/9] Performing download step (git clone) for 'bindings-populate'
+2026-03-29T07:16:19.5851738Z Cloning into 'bindings-src'...
+2026-03-29T07:16:25.9552919Z Already on 'main'
+2026-03-29T07:16:25.9556669Z Your branch is up to date with 'origin/main'.
+2026-03-29T07:16:25.9838727Z [2/9] Performing update step for 'bindings-populate'
+2026-03-29T07:16:25.9899224Z -- Fetching latest from the remote origin
+2026-03-29T07:16:26.2039322Z [3/9] No patch step for 'bindings-populate'
+2026-03-29T07:16:26.2118611Z [5/9] No configure step for 'bindings-populate'
+2026-03-29T07:16:26.2157276Z [6/9] No build step for 'bindings-populate'
+2026-03-29T07:16:26.2192848Z [7/9] No install step for 'bindings-populate'
+2026-03-29T07:16:26.2227887Z [8/9] No test step for 'bindings-populate'
+2026-03-29T07:16:26.2276499Z [9/9] Completed 'bindings-populate'
+2026-03-29T07:16:26.2291282Z -- Looking for ccache/sccache
+2026-03-29T07:16:26.2291878Z -- Looking for ccache/sccache - detecting variant
+2026-03-29T07:16:26.2292773Z Using sccache with Clang, PCH will be enabled.
+2026-03-29T07:16:26.2293190Z -- Looking for ccache/sccache - detected sccache
+2026-03-29T07:16:26.2293795Z -- Pre-compiled headers - ON
+2026-03-29T07:16:26.2340623Z -- Found Geode CLI: /home/runner/work/python-runtime-mod/python-runtime-mod/my-epic-geode-cli/geode (version 3.7.4)
+2026-03-29T07:16:26.2354622Z -- CPM: Adding package result@1.4.1 (v1.4.1 to /home/runner/work/python-runtime-mod/python-runtime-mod/cpm-cache/result/1b9c)
+2026-03-29T07:16:26.5078154Z -- CPM: Adding package json@3.3.0 (v3.3.0 to /home/runner/work/python-runtime-mod/python-runtime-mod/cpm-cache/json/75ca)
+2026-03-29T07:16:26.7951309Z -- CPM: Adding package nontype_functional@6 (6d1d08c to /home/runner/work/python-runtime-mod/python-runtime-mod/cpm-cache/nontype_functional/aaa0)
+2026-03-29T07:16:27.1540934Z -- CPM: Adding package fmt@12.1.0 (12.1.0 to /home/runner/work/python-runtime-mod/python-runtime-mod/cpm-cache/fmt/6226)
+2026-03-29T07:16:28.5615448Z -- {fmt} version: 12.1.0
+2026-03-29T07:16:28.5616014Z -- Build type: Release
+2026-03-29T07:16:28.5947603Z -- Performing Test HAS_NULLPTR_WARNING
+2026-03-29T07:16:30.0248046Z -- Performing Test HAS_NULLPTR_WARNING - Success
+2026-03-29T07:16:30.0269363Z -- CPM: Adding package asp2@51 (51d3773 to /home/runner/work/python-runtime-mod/python-runtime-mod/cpm-cache/asp2/4dd3)
+2026-03-29T07:16:30.3269384Z -- CPM: Adding package arc@1.5.5 (v1.5.5 to /home/runner/work/python-runtime-mod/python-runtime-mod/cpm-cache/arc/70cb)
+2026-03-29T07:16:30.6360634Z -- Arc features: time
+2026-03-29T07:16:30.6378424Z -- CPM: Adding package TulipHook@3.1.11 (v3.1.11 to /home/runner/work/python-runtime-mod/python-runtime-mod/cpm-cache/tuliphook/37c6)
+2026-03-29T07:16:31.1014681Z -- Performing Test SUPPORTS_W_NO_EVERYTHING
+2026-03-29T07:16:31.1819972Z -- Performing Test SUPPORTS_W_NO_EVERYTHING - Success
+2026-03-29T07:16:31.1835299Z Set SKIP_BUILDING_CODEGEN to OFF to force codegen to build locally.
+2026-03-29T07:16:31.1836288Z -- Downloading Codegen
+2026-03-29T07:16:31.3407848Z -- Downloading Codegen - success
+2026-03-29T07:16:31.3408445Z -- Skipping building Codegen
+2026-03-29T07:16:31.3408817Z -- Running Codegen
+2026-03-29T07:16:31.8955860Z CMake Warning (dev) at geode-sdk-clone/cmake/GeodeFile.cmake:57 (add_custom_command):
+2026-03-29T07:16:31.8957672Z './Codegen' 'Android64' '/home/runner/work/python-runtime-mod/python-runtime-mod/build/_deps/bindings-src/bindings/2.2081' '/home/runner/work/python-runtime-mod/python-runtime-mod/build/bindings/bindings'
+2026-03-29T07:16:31.8959396Z   The following keywords are not supported when using
+2026-03-29T07:16:31.8959728Z   add_custom_command(TARGET): DEPENDS.
+2026-03-29T07:16:31.8959903Z 
+2026-03-29T07:16:31.8960097Z   Policy CMP0175 is not set: add_custom_command() rejects invalid arguments.
+2026-03-29T07:16:31.8960585Z   Run "cmake --help-policy CMP0175" for policy details.  Use the cmake_policy
+2026-03-29T07:16:31.8961229Z   command to set the policy and suppress this warning.
+2026-03-29T07:16:31.8961769Z Call Stack (most recent call first):
+2026-03-29T07:16:31.8962515Z   CMakeLists.txt:86 (setup_geode_mod)
+2026-03-29T07:16:31.8963123Z This warning is for project developers.  Use -Wno-dev to suppress it.
+2026-03-29T07:16:31.8963567Z 
+2026-03-29T07:16:31.8963718Z -- Setting up PythonRuntime
+2026-03-29T07:16:31.8964210Z -- Mod chimed.python_runtime is compiling for Geode version 5.4.1
+2026-03-29T07:16:31.9004683Z -- Skipping installing PythonRuntime
+2026-03-29T07:16:31.9022332Z -- Configuring done (18.3s)
+2026-03-29T07:16:32.0990588Z -- Generating done (0.2s)
+2026-03-29T07:16:32.0996731Z -- Build files have been written to: /home/runner/work/python-runtime-mod/python-runtime-mod/build
+2026-03-29T07:16:32.1217002Z [0/2] Re-checking globbed directories...
+2026-03-29T07:16:34.9192831Z [1/30] Building CXX object _deps/fmt-build/CMakeFiles/fmt.dir/src/os.cc.o
+2026-03-29T07:16:35.0974416Z [2/30] Building CXX object _deps/fmt-build/CMakeFiles/fmt.dir/src/format.cc.o
+2026-03-29T07:16:35.1651393Z [3/30] Building CXX object _deps/asp2-build/CMakeFiles/asp.dir/Unity/unity_0_cxx.cxx.o
+2026-03-29T07:16:35.2801170Z [4/30] Building CXX object _deps/arc-build/CMakeFiles/arc.dir/Unity/unity_0_cxx.cxx.o
+2026-03-29T07:16:35.7191619Z [5/30] Linking CXX static library _deps/fmt-build/libfmt.a
+2026-03-29T07:16:35.7282625Z [6/30] Linking CXX static library _deps/asp2-build/libasp.a
+2026-03-29T07:16:35.7383679Z [7/30] Linking CXX static library _deps/arc-build/libarc.a
+2026-03-29T07:16:36.2237575Z [8/30] Running Codegen
+2026-03-29T07:16:36.8855688Z [9/30] Building CXX object bindings/CMakeFiles/GeodeBindings.dir/Unity/unity_13_cxx.cxx.o
+2026-03-29T07:16:36.8994317Z [10/30] Building CXX object bindings/CMakeFiles/GeodeBindings.dir/Unity/unity_14_cxx.cxx.o
+2026-03-29T07:16:36.9214886Z [11/30] Building CXX object bindings/CMakeFiles/GeodeBindings.dir/Unity/unity_11_cxx.cxx.o
+2026-03-29T07:16:37.3650928Z [12/30] Building CXX object bindings/CMakeFiles/GeodeBindings.dir/Unity/unity_12_cxx.cxx.o
+2026-03-29T07:16:37.3748858Z [13/30] Building CXX object bindings/CMakeFiles/GeodeBindings.dir/Unity/unity_9_cxx.cxx.o
+2026-03-29T07:16:37.4390816Z [14/30] Building CXX object bindings/CMakeFiles/GeodeBindings.dir/Unity/unity_10_cxx.cxx.o
+2026-03-29T07:16:37.8229190Z [15/30] Building CXX object bindings/CMakeFiles/GeodeBindings.dir/Unity/unity_8_cxx.cxx.o
+2026-03-29T07:16:37.8279645Z [16/30] Building CXX object bindings/CMakeFiles/GeodeBindings.dir/Unity/unity_7_cxx.cxx.o
+2026-03-29T07:16:37.8683347Z [17/30] Building CXX object bindings/CMakeFiles/GeodeBindings.dir/Unity/unity_6_cxx.cxx.o
+2026-03-29T07:16:38.2794059Z [18/30] Building CXX object bindings/CMakeFiles/GeodeBindings.dir/Unity/unity_4_cxx.cxx.o
+2026-03-29T07:16:38.3254795Z [19/30] Building CXX object bindings/CMakeFiles/GeodeBindings.dir/Unity/unity_5_cxx.cxx.o
+2026-03-29T07:16:38.3330754Z [20/30] Building CXX object bindings/CMakeFiles/GeodeBindings.dir/Unity/unity_2_cxx.cxx.o
+2026-03-29T07:16:38.7623443Z [21/30] Building CXX object bindings/CMakeFiles/GeodeBindings.dir/Unity/unity_1_cxx.cxx.o
+2026-03-29T07:16:38.7644389Z [22/30] Building CXX object bindings/CMakeFiles/GeodeBindings.dir/Unity/unity_3_cxx.cxx.o
+2026-03-29T07:16:38.7667095Z [23/30] Building CXX object bindings/CMakeFiles/GeodeBindings.dir/Unity/unity_0_cxx.cxx.o
+2026-03-29T07:16:38.8381023Z [24/30] Linking CXX static library bindings/libGeodeBindings.a
+2026-03-29T07:16:47.3100598Z [25/30] Building CXX object CMakeFiles/PythonRuntime.dir/cmake_pch.hxx.pch
+2026-03-29T07:16:47.6591056Z [26/30] Building CXX object CMakeFiles/PythonRuntime.dir/geode-sdk-clone/entry.cpp.o
+2026-03-29T07:16:47.9200752Z [27/30] Building CXX object CMakeFiles/PythonRuntime.dir/src/main.cpp.o
+2026-03-29T07:16:47.9201598Z FAILED: [code=1] CMakeFiles/PythonRuntime.dir/src/main.cpp.o 
+2026-03-29T07:16:47.9215984Z /usr/local/bin//sccache /usr/local/lib/android/sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android23 --sysroot=/usr/local/lib/android/sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/sysroot -DARC_FEATURE_TIME=1 -DGEODE_COMP_GD_VERSION=22081 -DGEODE_GD_VERSION=2.2081 -DGEODE_GD_VERSION_STRING=\"2.2081\" -DGEODE_MOD_ID=\"chimed.python_runtime\" -DMAT_JSON_DYNAMIC=1 -DPROJECT_NAME=PythonRuntime -DPYTHON_RUNTIME_EXPORT -DPythonRuntime_EXPORTS -I/home/runner/work/python-runtime-mod/python-runtime-mod/geode-sdk-clone/loader/include -I/home/runner/work/python-runtime-mod/python-runtime-mod/geode-sdk-clone/loader/include/Geode/cocos/include -I/home/runner/work/python-runtime-mod/python-runtime-mod/geode-sdk-clone/loader/include/Geode/cocos/extensions -I/home/runner/work/python-runtime-mod/python-runtime-mod/geode-sdk-clone/loader/include/Geode/fmod -isystem /usr/include/python3.12 -isystem /home/runner/work/python-runtime-mod/python-runtime-mod/build/bindings/bindings -isystem /home/runner/work/python-runtime-mod/python-runtime-mod/build/_deps/bindings-src/bindings/include -isystem /home/runner/work/python-runtime-mod/python-runtime-mod/cpm-cache/fmt/6226/include -isystem /home/runner/work/python-runtime-mod/python-runtime-mod/cpm-cache/tuliphook/37c6/include -isystem /home/runner/work/python-runtime-mod/python-runtime-mod/cpm-cache/result/1b9c/include -isystem /home/runner/work/python-runtime-mod/python-runtime-mod/cpm-cache/json/75ca/include -isystem /home/runner/work/python-runtime-mod/python-runtime-mod/cpm-cache/nontype_functional/aaa0/include -isystem /home/runner/work/python-runtime-mod/python-runtime-mod/cpm-cache/asp2/4dd3/include -isystem /home/runner/work/python-runtime-mod/python-runtime-mod/cpm-cache/arc/70cb/include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -O3 -DNDEBUG  -std=gnu++23 -flto=thin -fPIC -fvisibility=hidden -Werror=return-type -ffunction-sections -fdata-sections -Winvalid-pch -Xclang -include-pch -Xclang /home/runner/work/python-runtime-mod/python-runtime-mod/build/CMakeFiles/PythonRuntime.dir/cmake_pch.hxx.pch -Xclang -include -Xclang /home/runner/work/python-runtime-mod/python-runtime-mod/build/CMakeFiles/PythonRuntime.dir/cmake_pch.hxx -MD -MT CMakeFiles/PythonRuntime.dir/src/main.cpp.o -MF CMakeFiles/PythonRuntime.dir/src/main.cpp.o.d -o CMakeFiles/PythonRuntime.dir/src/main.cpp.o -c /home/runner/work/python-runtime-mod/python-runtime-mod/src/main.cpp
+2026-03-29T07:16:47.9227725Z In file included from /home/runner/work/python-runtime-mod/python-runtime-mod/src/main.cpp:3:
+2026-03-29T07:16:47.9228262Z In file included from /usr/include/python3.12/Python.h:12:
+2026-03-29T07:16:47.9228838Z /usr/include/python3.12/pyconfig.h:9:12: fatal error: 'aarch64-linux-gnu/python3.12/pyconfig.h' file not found
+2026-03-29T07:16:47.9229389Z     9 | #  include <aarch64-linux-gnu/python3.12/pyconfig.h>
+2026-03-29T07:16:47.9229716Z       |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-03-29T07:16:47.9229980Z 1 error generated.
+2026-03-29T07:16:47.9230204Z ninja: build stopped: subcommand failed.
+2026-03-29T07:16:47.9240309Z ##[error]Process completed with exit code 1.

@@ -15,18 +15,24 @@ jobs:
         - name: Windows
           os: windows-latest
           target: windows
+          extra-args: ""
         - name: macOS
           os: macos-latest
           target: mac-os
+          # macOS runner is arm64, so we disable universal binary to avoid x86_64 linking errors with arm64 Python
+          extra-args: "-DGEODE_DISABLE_UNIVERSAL_BINARY=ON"
         - name: iOS
           os: macos-latest
           target: ios
+          extra-args: ""
         - name: Android64
           os: ubuntu-latest
           target: android64
+          extra-args: ""
         - name: Android32
           os: ubuntu-latest
           target: android32
+          extra-args: ""
 
     name: ${{ matrix.config.name }}
     runs-on: ${{ matrix.config.os }}
@@ -39,12 +45,12 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-- name: Build Mod
-  uses: geode-sdk/build-geode-mod@main
-  with:
-    bindings-checkout: false
-    combine: true
-    target: ${{ matrix.config.target }}
-    # Force CMake to use the Python we just set up
-    extra-config: -DPython3_ROOT_DIR=${{ env.pythonLocation }} -DPython3_FIND_STRATEGY=LOCATION -DPython3_FIND_FRAMEWORK=NEVER
 
+      - name: Build Mod
+        uses: geode-sdk/build-geode-mod@main
+        with:
+          bindings-checkout: false
+          combine: true
+          target: ${{ matrix.config.target }}
+          # Force CMake to use the Python we just set up
+          extra-config: -DPython3_ROOT_DIR=${{ env.pythonLocation }} -DPython3_FIND_STRATEGY=LOCATION -DPython3_FIND_FRAMEWORK=NEVER ${{ matrix.config.extra-args }}
