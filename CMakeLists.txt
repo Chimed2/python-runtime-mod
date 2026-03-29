@@ -27,15 +27,18 @@ if (ANDROID)
         # We try to find the specific library version
         find_library(PYTHON_LIB NAMES python3.11 python3 PATHS "${PREBUILT_PYTHON_PATH}/lib" NO_DEFAULT_PATH)
         if (NOT PYTHON_LIB)
-            message(FATAL_ERROR "Could not find Python library in ${PREBUILT_PYTHON_PATH}/lib")
+            message(FATAL_ERROR "Could not find Python library in ${PREBUILT_PYTHON_PATH}/lib. Please ensure PREBUILT_PYTHON_PATH is correctly set to a Python installation for Android.")
         endif()
         
         target_link_libraries(Python3_Mobile INTERFACE ${PYTHON_LIB})
         set(PYTHON_TARGET Python3_Mobile)
     else()
-        message(WARNING "Neither PREBUILT_PYTHON_PATH nor Python3_ROOT_DIR is set for Android. Build might fail.")
-        find_package(Python3 REQUIRED COMPONENTS Development.Embed)
-        set(PYTHON_TARGET Python3::Python)
+        # The fallback find_package(Python3) is unlikely to work for Android NDK compilation
+        # without specific toolchain configurations. It's best to provide PREBUILT_PYTHON_PATH.
+        message(FATAL_ERROR "PREBUILT_PYTHON_PATH is not set for Android. Please set this variable to the path of your Android-compiled Python installation (e.g., its 'include' and 'lib' directories). Without it, the build will likely fail.")
+        # The following line will now likely not be reached due to the FATAL_ERROR above.
+        # find_package(Python3 REQUIRED COMPONENTS Development.Embed) 
+        # set(PYTHON_TARGET Python3::Python)
     endif()
 else()
     # On desktop platforms, standard discovery is usually fine.
@@ -43,6 +46,7 @@ else()
     set(PYTHON_TARGET Python3::Python)
     message(STATUS "Found Python: ${Python3_VERSION} at ${Python3_EXECUTABLE}")
 endif()
+
 
 # --- Project Setup ---
 project(PythonRuntime VERSION 1.0.0)
