@@ -12,9 +12,7 @@ set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 if (ANDROID)
     message(STATUS "Configuring Python for Android...")
     
-    # I literally spent all of yesterday fighting with Android's find_library.
-    # Why is it so inconsistent with the NDK? If this pathing logic 
-    # ever breaks again, I'm quitting.
+    # Allow the user to specify a path to a prebuilt Python for Android
     if (NOT DEFINED PREBUILT_PYTHON_PATH AND Python3_ROOT_DIR)
         set(PREBUILT_PYTHON_PATH ${Python3_ROOT_DIR})
     endif()
@@ -33,15 +31,14 @@ if (ANDROID)
         target_link_libraries(Python3_Mobile INTERFACE ${PYTHON_LIB})
         set(PYTHON_TARGET Python3_Mobile)
     else()
-        # The fallback find_package(Python3) is unlikely to work for Android NDK compilation
-        # without specific toolchain configurations. It's best to provide PREBUILT_PYTHON_PATH.
+        # This FATAL_ERROR should ONLY be triggered for Android builds if PREBUILT_PYTHON_PATH is not set.
         message(FATAL_ERROR "PREBUILT_PYTHON_PATH is not set for Android. Please set this variable to the path of your Android-compiled Python installation (e.g., its 'include' and 'lib' directories). Without it, the build will likely fail.")
         # The following line will now likely not be reached due to the FATAL_ERROR above.
         # find_package(Python3 REQUIRED COMPONENTS Development.Embed) 
         # set(PYTHON_TARGET Python3::Python)
     endif()
 else()
-    # On desktop platforms, standard discovery is usually fine.
+    # On desktop platforms (Windows, macOS, Linux), standard discovery is usually fine.
     find_package(Python3 REQUIRED COMPONENTS Interpreter Development.Embed)
     set(PYTHON_TARGET Python3::Python)
     message(STATUS "Found Python: ${Python3_VERSION} at ${Python3_EXECUTABLE}")
